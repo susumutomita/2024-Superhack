@@ -1,6 +1,8 @@
 name: contract-ci
 
-on: workflow_dispatch
+on:
+  push:
+  workflow_dispatch:
 
 env:
   FOUNDRY_PROFILE: ci
