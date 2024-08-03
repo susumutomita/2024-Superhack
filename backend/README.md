@@ -54,8 +54,7 @@ $ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --pri
 ### Cast
 
 ```shell
-$ cast <subcommand>
-```
+cast <subcommand>
 
 ### Help
 
