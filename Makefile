@@ -18,8 +18,12 @@ clean:
 lint:
 	npm run lint
 
+.PHONY: test_backend
+test_backend:
+	npm run test:backend
+
 .PHONY: before_commit
-before_commit: lint
+before_commit: lint test_backend
 
 .PHONY: start_frontend
 start_frontend:
