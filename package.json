@@ -1,0 +1,37 @@
+{
+  "name": "2024-Superhack",
+  "version": "1.0.0",
+  "description": "TimelyPal is a decentralized schedule coordination platform",
+  "main": "index.js",
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "npx textlint '**/*.md'",
+    "lint-staged": "lint-staged",
+    "prepare": "husky install",
+    "start": "concurrently \"npm start --prefix frontend\" \"npm start --prefix backend\"",
+    "install-all": "npm install && npm install --prefix frontend && npm install --prefix backend"
+  },
+  "keywords": [],
+  "author": "Susumu Tomita <oyter880@gmail.com> (https://susumutomita.netlify.app/)",
+  "license": "MIT",
+  "dependencies": {
+    "typescript": "^5.4.5"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "husky": "^8.0.3",
+    "textlint": "^14.0.4",
+    "textlint-rule-ja-no-abusage": "^3.0.0",
+    "textlint-rule-ja-no-inappropriate-words": "^2.0.0",
+    "textlint-rule-no-double-negative-ja": "^2.0.1",
+    "textlint-rule-no-dropping-the-ra": "^3.0.0",
+    "textlint-rule-prefer-tari-tari": "^1.0.3",
+    "textlint-rule-preset-ja-spacing": "^2.2.0",
+    "textlint-rule-preset-ja-technical-writing": "^10.0.1",
+    "textlint-rule-spellcheck-tech-word": "^5.0.0"
+  }
+}
