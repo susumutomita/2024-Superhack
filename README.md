@@ -4,19 +4,19 @@
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/susumutomita/2024-Superhack)
 ![GitHub repo size](https://img.shields.io/github/repo-size/susumutomita/2024-Superhack)
 
-# TimelyPal
+# Drink & Discover World
 
-ETH Global Link: [TimelyPal Showcase](https://ethglobal.com/showcase/timelypal-sfbo5)
+ETH Global Link: [Drink & Discover World Showcase](https://ethglobal.com/showcase/drink-and-discover-world)
 
 <div style="text-align: center;">
-  <img src="./images/logo.png" width="200" height="200" alt="TimelyPal Logo"/>
+  <img src="./images/logo.png" width="200" height="200" alt="Drink & Discover World Logo"/>
 </div>
 
-TimelyPal is a decentralized schedule coordination platform that leverages blockchain technology to enhance transparency and reliability. Users can propose and vote on schedules, with all actions recorded immutably on the blockchain.
+Drink & Discover World is an innovative platform that combines the unique drinking cultures of various countries with blockchain technology. Users can schedule and join virtual drinking events, participate in traditional and modern drinking games, and enjoy a transparent, privacy-focused experience. Our mission is to foster cultural exchange and international understanding through the shared experience of social drinking.
 
 ## Table of Contents
 
-- [TimelyPal](#timelypal)
+- [Drink \& Discover World](#drink--discover-world)
   - [Table of Contents](#table-of-contents)
   - [Introduction](#introduction)
   - [Features](#features)
@@ -33,14 +33,16 @@ TimelyPal is a decentralized schedule coordination platform that leverages block
 
 ## Introduction
 
-TimelyPal is a decentralized application (dApp) designed to facilitate transparent and reliable schedule coordination. By recording all proposals and votes on the blockchain, TimelyPal ensures that the scheduling process is tamper-proof and transparent. Additionally, TimelyPal guarantees privacy as schedule information is not stored on any centralized server, but instead on a decentralized network.
+Drink & Discover World is a decentralized application (dApp) designed to facilitate cultural exchange through virtual drinking events. Users can organize and join drinking parties, participate in traditional drinking games like Senryu (Japanese poetry) competitions, and benefit from a transparent and privacy-focused experience provided by blockchain technology. This platform aims to introduce and celebrate various global drinking cultures, encouraging mutual understanding and appreciation.
 
 ## Features
 
-- **Decentralized Schedule Proposals and Voting**: Users can propose and vote on schedules, with all actions recorded on the blockchain.
-- **Transparency and Immutability**: All data is stored on the blockchain, ensuring it cannot be altered.
-- **Privacy Protection**: Schedule information is not stored on any centralized server, ensuring user privacy. Utilizes Decentralized Identity (DID) for user authentication, protecting personal information.
-- **Automated Notifications**: Participants are automatically notified when a schedule is finalized.
+- **Global Drinking Event Scheduler**: Organize and schedule virtual drinking events with participants from around the world.
+- **Interactive Drinking Games**: Participate in traditional and modern drinking games from different cultures, such as Senryu competitions, quizzes, and more.
+- **Real-time Voting**: Conduct real-time voting on games and activities, recorded on the blockchain for transparency and fairness.
+- **Reward System**: Earn tokens and NFTs based on the popularity of your contributions.
+- **Crypto Payments**: Automate payments and bill splitting using smart contracts, supporting both "warikan" (equal split) and "keisha wari" (proportional split based on age or rank).
+- **World ID Integration**: Secure user authentication and bot prevention using World ID.
 
 ## Technologies Used
 
@@ -49,22 +51,22 @@ TimelyPal is a decentralized application (dApp) designed to facilitate transpare
 - **Front-end**: React
 - **Back-end**: Node.js, Express
 - **Database**: IPFS (InterPlanetary File System)
-- **Authentication**: Decentralized Identity (DID)
+- **Authentication**: World ID
 
 ## Images
 
 <div style="text-align: center;">
-  <img src="./images/schedulechain-diagram.png" width="400" height="400" alt="System Overview"/>
+  <img src="./images/drink-discover-world-diagram.png" width="400" height="400" alt="System Overview"/>
 </div>
 
 ## System Overview
 
-TimelyPal consists of a front-end built with React and a back-end powered by Node.js and Express. The system leverages smart contracts on the Metal L2 blockchain to handle schedule proposals and voting. IPFS is used to store detailed schedule information, ensuring data persistence and immutability. This decentralized approach ensures that no schedule information is stored on a central server, enhancing user privacy.
+Drink & Discover World consists of a front-end built with React and a back-end powered by Node.js and Express. The system leverages smart contracts on the Metal L2 blockchain to handle event scheduling, game participation, voting, and payments. IPFS is used to store detailed event and game information, ensuring data persistence and immutability. This decentralized approach ensures that no sensitive information is stored on a central server, enhancing user privacy.
 
 ## Screenshots
 
 <div style="text-align: center;">
-  <img src="./images/schedulechain-screenshot.png" width="400" height="300" alt="TimelyPal Screenshot"/>
+  <img src="./images/drink-discover-world-screenshot.png" width="400" height="300" alt="Drink & Discover World Screenshot"/>
 </div>
 
 ## Installation
@@ -72,39 +74,45 @@ TimelyPal consists of a front-end built with React and a back-end powered by Nod
 1. **Clone the repository**:
    ```bash
    git clone https://github.com/susumutomita/2024-Superhack
-   cd timelypal
+   cd drink-discover-world
    ```
 
 2. **Install dependencies**:
    ```bash
    npm install
+   cd client && npm install
    ```
 
 3. **Set up environment variables**:
    Create a `.env` file in the `backend/` directory and add necessary configurations.
 
    ```plaintext
+   REACT_APP_CONTRACT_ADDRESS=<Your Contract Address>
+   OPENAI_API_KEY=<Your OpenAI API Key>
+   WORLD_ID_API_KEY=<Your World ID API Key>
    NODE_ENV=<development | production>
    ```
 
 4. **Run the server**:
    ```bash
-   npm start
+   npm run start
    ```
 
 ## Usage
 
 - Open your browser and navigate to `http://localhost:3000`.
-- Propose new schedules, vote on existing proposals, and receive notifications when a schedule is finalized.
+- Organize virtual drinking events, participate in interactive drinking games, vote in real-time, and automate payments.
 
 ## Future Prospects
 
-- **Integration with Calendar Apps**: Plan to integrate with popular calendar applications (Google Calendar, Outlook, etc.) to streamline the scheduling process.
-- **Enhanced Privacy Features**: Implement advanced encryption methods to further protect user data.
+- **Expansion of Partner Businesses**: Increase the number of partner businesses offering rewards.
+- **Global Competitions**: Host global competitions with higher stakes and bigger rewards.
+- **Enhanced User Experience**: Improve the UI/UX based on user feedback.
+- **Cultural Content Expansion**: Add more content about different drinking cultures and social customs worldwide.
 
 ## Contributing
 
-We welcome contributions to TimelyPal. Please fork the repository and submit pull requests for review. For major changes, please open an issue first to discuss what you would like to change.
+We welcome contributions to Drink & Discover World. Please fork the repository and submit pull requests for review. For major changes, please open an issue first to discuss what you would like to change.
 
 ## License
 
@@ -113,3 +121,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ## The Team
 
 - [Susumu Tomita](https://susumutomita.netlify.app/) - Full Stack Developer
+```
