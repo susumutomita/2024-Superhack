@@ -6,7 +6,7 @@
 
 # Drink & Discover World
 
-ETH Global Link: [Drink & Discover World Showcase](https://ethglobal.com/showcase/drink-and-discover-world)
+ETH Global Link: [Drink & Discover World Showcase](https://ethglobal.com/showcase/drink-and-discoverworld-sfbo5)
 
 <div style="text-align: center;">
   <img src="./images/logo.png" width="200" height="200" alt="Drink & Discover World Logo"/>
