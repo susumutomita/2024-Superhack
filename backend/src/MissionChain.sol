@@ -28,7 +28,7 @@ contract MissionChain {
     function getMissionByIndex(
         uint256 index
     ) public view returns (string memory, string memory) {
-        require(index < missions.length, "Index out of bounds");
+        require(index < missions.length, "Mission index out of bounds");
         Mission storage mission = missions[index];
         return (mission.companyName, mission.missionCid);
     }
