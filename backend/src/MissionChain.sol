@@ -9,10 +9,15 @@ contract MissionChain {
 
     Mission[] private missions;
 
+    modifier onlyOwner() {
+        require(msg.sender == owner, "Not the contract owner");
+        _;
+    }
+
     function setMission(
         string memory _companyName,
         string memory _missionCid
-    ) public {
+    ) public onlyOwner {
         missions.push(Mission(_companyName, _missionCid));
     }
 
