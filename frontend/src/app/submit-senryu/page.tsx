@@ -11,12 +11,15 @@ declare global {
 
 export default function SubmitSenryu() {
   const [content, setContent] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true);
 
     if (!window.ethereum) {
       alert('MetaMask is not installed!');
+      setLoading(false);
       return;
     }
 
@@ -29,6 +32,7 @@ export default function SubmitSenryu() {
 
       await contract.submitSenryu(content);
       alert('Senryu submitted successfully!');
+      setLoading(false);
     } catch (error: any) {
       console.error('Error submitting senryu:', error);
       if (error.code === 4001) {
@@ -36,6 +40,7 @@ export default function SubmitSenryu() {
       } else {
         alert('Failed to submit senryu');
       }
+      setLoading(false);
     }
   };
 
