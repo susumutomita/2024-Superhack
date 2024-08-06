@@ -121,4 +121,3 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ## The Team
 
 - [Susumu Tomita](https://susumutomita.netlify.app/) - Full Stack Developer
-```
