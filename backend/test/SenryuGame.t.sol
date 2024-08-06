@@ -18,7 +18,7 @@ contract SenryuGameTest is Test {
         senryuGame.submitSenryu(content);
 
         // Verify the senryu was added
-        (uint id, string memory actualContent, address author, uint voteCount) = senryuGame.senryus(0);
+        (uint256 id, string memory actualContent, address author, uint256 voteCount) = senryuGame.senryus(0);
 
         assertEq(id, 0);
         assertEq(actualContent, content);
@@ -36,7 +36,7 @@ contract SenryuGameTest is Test {
         senryuGame.vote(0);
 
         // Verify the vote was counted
-        (, , , uint voteCount) = senryuGame.senryus(0);
+        (,,, uint256 voteCount) = senryuGame.senryus(0);
         assertEq(voteCount, 1);
 
         // Verify that the voter cannot vote again

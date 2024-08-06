@@ -3,23 +3,23 @@ pragma solidity ^0.8.19;
 
 contract SenryuGame {
     struct Senryu {
-        uint id;
+        uint256 id;
         string content;
         address author;
-        uint voteCount;
+        uint256 voteCount;
     }
 
     struct Vote {
         address voter;
-        uint senryuId;
+        uint256 senryuId;
     }
 
     Senryu[] public senryus;
     mapping(address => bool) public hasVoted;
-    uint public nextId;
+    uint256 public nextId;
 
-    event SenryuSubmitted(uint id, string content, address author);
-    event Voted(uint senryuId, address voter);
+    event SenryuSubmitted(uint256 id, string content, address author);
+    event Voted(uint256 senryuId, address voter);
 
     function submitSenryu(string memory content) public {
         senryus.push(Senryu(nextId, content, msg.sender, 0));
@@ -27,7 +27,7 @@ contract SenryuGame {
         nextId++;
     }
 
-    function vote(uint senryuId) public {
+    function vote(uint256 senryuId) public {
         require(!hasVoted[msg.sender], "You have already voted");
         require(senryuId < senryus.length, "Invalid Senryu ID");
 
