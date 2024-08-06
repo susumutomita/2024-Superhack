@@ -18,8 +18,16 @@ clean:
 lint:
 	npm run lint
 
+.PHONY: format_conotract
+format_conotract:
+	npm run format:contract
+
+.PHONY: test_contract
+test_contract:
+	npm run test:contract
+
 .PHONY: before_commit
-before_commit: lint
+before_commit: lint	format_conotract	test_contract
 
 .PHONY: start_frontend
 start_frontend:

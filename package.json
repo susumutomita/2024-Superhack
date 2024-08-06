@@ -9,6 +9,8 @@
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "test:contract": "forge test -vvv --root backend",
+    "format:contract": "forge fmt --root backend",
     "lint": "npx textlint '**/*.md'",
     "lint-staged": "lint-staged",
     "prepare": "husky install",
