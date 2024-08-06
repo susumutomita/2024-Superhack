@@ -1,3 +1,4 @@
+[![contract-ci](https://github.com/susumutomita/2024-Superhack/actions/workflows/contract_ci.yml/badge.svg?branch=main)](https://github.com/susumutomita/2024-Superhack/actions/workflows/contract_ci.yml)
 ![GitHub last commit (by committer)](https://img.shields.io/github/last-commit/susumutomita/2024-Superhack)
 ![GitHub top language](https://img.shields.io/github/languages/top/susumutomita/2024-Superhack)
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/susumutomita/2024-Superhack)
