@@ -5,11 +5,14 @@ import { abi, contractAddress } from '../constants/contract';
 
 export default function ViewSenryus() {
   const [senryus, setSenryus] = useState<{ id: number, content: string, voteCount: number }[]>([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchSenryus = async () => {
+      setLoading(true);
       if (!window.ethereum) {
         alert('MetaMask is not installed!');
+        setLoading(false);
         return;
       }
 
@@ -20,9 +23,11 @@ export default function ViewSenryus() {
         const senryuList = await contract.getSenryus();
 
         setSenryus(senryuList);
+        setLoading(false);
       } catch (error) {
         console.error('Error fetching senryus:', error);
         alert('Failed to fetch senryus');
+        setLoading(false);
       }
     };
 
@@ -30,8 +35,10 @@ export default function ViewSenryus() {
   }, []);
 
   const vote = async (senryuId: number) => {
+    setLoading(true);
     if (!window.ethereum) {
       alert('MetaMask is not installed!');
+      setLoading(false);
       return;
     }
 
@@ -45,6 +52,7 @@ export default function ViewSenryus() {
       await contract.vote(senryuId);
       const senryuList = await contract.getSenryus();
       setSenryus(senryuList);
+      setLoading(false);
     } catch (error: any) {
       console.error('Error voting for senryu:', error);
       if (error.code === 4001) {
@@ -52,6 +60,7 @@ export default function ViewSenryus() {
       } else {
         alert('Failed to vote for senryu');
       }
+      setLoading(false);
     }
   };
 
