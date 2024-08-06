@@ -30,6 +30,11 @@ jobs:
           forge build --sizes --root backend
         id: build
 
+      - name: Run Forge format check
+        run: |
+          forge fmt --check --root backend
+        id: format
+
       - name: Run Forge tests
         run: |
           forge test -vvv --root backend
