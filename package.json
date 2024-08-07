@@ -17,7 +17,7 @@
     "format:check": "prettier --check '**/**/*.{ts,tsx,js,jsx,css}'",
     "lint": "npx textlint '**/*.md'",
     "lint-staged": "lint-staged",
-    "prepare": "husky install",
+    "husky": "husky install",
     "start": "concurrently \"npm start --prefix frontend\" \"npm start --prefix backend\"",
     "install-all": "npm install && npm install --prefix frontend && npm install --prefix backend"
   },
