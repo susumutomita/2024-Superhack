@@ -1,0 +1,4 @@
+SenryuGameTest:testCannotVoteTwice() (gas: 152383)
+SenryuGameTest:testInvalidSenryuId() (gas: 109551)
+SenryuGameTest:testSubmitSenryu() (gas: 110287)
+SenryuGameTest:testVote() (gas: 154793)

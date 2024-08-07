@@ -18,6 +18,18 @@ clean:
 lint:
 	npm run lint
 
+.PHONY: gas
+gas:
+	npm run gas
+
+.PHONY: format
+format:
+	npm run format
+
+.PHONY: format_check
+format_check:
+	npm run format:check
+
 .PHONY: format_contract
 format_contract:
 	npm run format:contract
@@ -27,7 +39,7 @@ test_contract:
 	npm run test:contract
 
 .PHONY: before_commit
-before_commit: lint format_contract test_contract
+before_commit: lint gas format_contract	format_check	test_contract
 
 .PHONY: start_frontend
 start_frontend:
@@ -41,7 +53,6 @@ start_backend:
 start:
 	npx concurrently "make start_backend" "make start_frontend"
 
-# 以下は新しく追加したターゲット
 .PHONY: build_backend
 build_backend:
 	cd backend && forge build
@@ -64,6 +75,7 @@ help:
 	@echo "  setup_husky     Setup Husky"
 	@echo "  clean           Clean the project"
 	@echo "  lint            Run linter"
+	@echo "  gas             Run gas reporter"
 	@echo "  format_contract Format contract"
 	@echo "  test_contract   Test contract"
 	@echo "  before_commit   Run checks before commit"

@@ -73,12 +73,14 @@ Drink & Discover World consists of a front-end built with React and a back-end p
 ## Installation
 
 1. **Clone the repository**:
+
    ```bash
    git clone https://github.com/susumutomita/2024-Superhack
    cd drink-discover-world
    ```
 
 2. **Install dependencies**:
+
    ```bash
    npm install
    cd client && npm install

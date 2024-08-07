@@ -8,9 +8,13 @@
     "backend"
   ],
   "scripts": {
+    "clean": "npx rimraf node_modules out",
     "test": "echo \"Error: no test specified\" && exit 1",
     "test:contract": "forge test -vvv --root backend",
     "format:contract": "forge fmt --root backend",
+    "gas": "forge snapshot --root backend",
+    "format": "prettier --write '**/**/*.{ts,tsx}'",
+    "format:check": "prettier --check '**/**/*.{ts,tsx,js,jsx,css}'",
     "lint": "npx textlint '**/*.md'",
     "lint-staged": "lint-staged",
     "prepare": "husky install",
@@ -26,6 +30,8 @@
   "devDependencies": {
     "concurrently": "^8.2.2",
     "husky": "^9.1.4",
+    "prettier": "^3.3.0",
+    "rimraf": "^5.0.5",
     "textlint": "^14.0.4",
     "textlint-rule-ja-no-abusage": "^3.0.0",
     "textlint-rule-ja-no-inappropriate-words": "^2.0.0",
