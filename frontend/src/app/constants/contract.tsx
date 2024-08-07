@@ -1,4 +1,4 @@
-export const contractAddress = "0xBCE90b34786b47E883D321fC95eD2422a2C22737";
+export const contractAddress = "0xe6721d84e32ed1511CB3207f1A8615ceAbb78348";
 
 export const abi = [
   {
@@ -28,8 +28,65 @@ export const abi = [
     type: "function",
   },
   {
-    inputs: [],
+    inputs: [
+      {
+        internalType: "uint",
+        name: "page",
+        type: "uint",
+      },
+      {
+        internalType: "uint",
+        name: "pageSize",
+        type: "uint",
+      },
+    ],
     name: "getSenryus",
+    outputs: [
+      {
+        components: [
+          {
+            internalType: "uint256",
+            name: "id",
+            type: "uint256",
+          },
+          {
+            internalType: "string",
+            name: "content",
+            type: "string",
+          },
+          {
+            internalType: "address",
+            name: "author",
+            type: "address",
+          },
+          {
+            internalType: "uint256",
+            name: "voteCount",
+            type: "uint256",
+          },
+        ],
+        internalType: "struct SenryuGame.Senryu[]",
+        name: "",
+        type: "tuple[]",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint",
+        name: "page",
+        type: "uint",
+      },
+      {
+        internalType: "uint",
+        name: "pageSize",
+        type: "uint",
+      },
+    ],
+    name: "getTopSenryus",
     outputs: [
       {
         components: [

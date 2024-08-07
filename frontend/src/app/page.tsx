@@ -18,6 +18,12 @@ export default function Home() {
         >
           View Senryus
         </Link>
+        <Link
+          href="/top-senryu"
+          className="inline-block bg-blue-500 text-white px-4 py-2 rounded-md dark-mode-button"
+        >
+          View Top Senryu
+        </Link>
       </div>
     </div>
   );
