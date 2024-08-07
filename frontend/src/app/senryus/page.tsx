@@ -8,6 +8,8 @@ export default function ViewSenryus() {
     { id: number; content: string; voteCount: number }[]
   >([]);
   const [loading, setLoading] = useState(false);
+  const [page, setPage] = useState(1);
+  const pageSize = 10; // 一度に取得するSenryuの数
 
   useEffect(() => {
     const fetchSenryus = async () => {
@@ -22,11 +24,11 @@ export default function ViewSenryus() {
         const provider = new BrowserProvider(window.ethereum);
         const signer = await provider.getSigner();
         const contract = new Contract(contractAddress, abi, signer);
-        const senryuList = await contract.getSenryus();
+        const senryuList = await contract.getSenryus(page, pageSize);
 
         const formattedSenryus = senryuList.map(
           (senryu: any, index: number) => ({
-            id: index,
+            id: senryu.id,
             content: senryu.content,
             voteCount: senryu.voteCount,
           }),
@@ -42,7 +44,7 @@ export default function ViewSenryus() {
     };
 
     fetchSenryus();
-  }, []);
+  }, [page]);
 
   const vote = async (senryuId: number) => {
     setLoading(true);
@@ -60,10 +62,10 @@ export default function ViewSenryus() {
       const contract = new Contract(contractAddress, abi, signer);
 
       await contract.vote(senryuId);
-      const senryuList = await contract.getSenryus();
+      const senryuList = await contract.getSenryus(page, pageSize);
 
-      const formattedSenryus = senryuList.map((senryu: any, index: number) => ({
-        id: index,
+      const formattedSenryus = senryuList.map((senryu: any) => ({
+        id: senryu.id,
         content: senryu.content,
         voteCount: senryu.voteCount,
       }));
@@ -81,24 +83,53 @@ export default function ViewSenryus() {
     }
   };
 
+  const handlePreviousPage = () => {
+    if (page > 1) {
+      setPage(page - 1);
+    }
+  };
+
+  const handleNextPage = () => {
+    setPage(page + 1);
+  };
+
   return (
     <div className="container mx-auto p-4 dark-mode-bg">
       <h1 className="text-2xl font-bold mb-4">Senryus</h1>
-      <ul>
-        {senryus.map((senryu, index) => (
-          <li key={index} className="mb-2">
-            <strong>Content:</strong> {senryu.content}
-            <br />
-            <strong>Votes:</strong> {senryu.voteCount}
-            <button
-              onClick={() => vote(senryu.id)}
-              className="ml-2 bg-blue-500 text-white px-2 py-1 rounded-md dark-mode-button"
-            >
-              Vote
-            </button>
-          </li>
-        ))}
-      </ul>
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <ul>
+          {senryus.map((senryu) => (
+            <li key={senryu.id} className="mb-2">
+              <strong>Content:</strong> {senryu.content}
+              <br />
+              <strong>Votes:</strong> {senryu.voteCount}
+              <button
+                onClick={() => vote(senryu.id)}
+                className="ml-2 bg-blue-500 text-white px-2 py-1 rounded-md dark-mode-button"
+              >
+                Vote
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
+      <div className="mt-4 flex justify-between">
+        <button
+          onClick={handlePreviousPage}
+          className="bg-gray-500 text-white px-4 py-2 rounded-md dark-mode-button"
+          disabled={page === 1}
+        >
+          Previous
+        </button>
+        <button
+          onClick={handleNextPage}
+          className="bg-gray-500 text-white px-4 py-2 rounded-md dark-mode-button"
+        >
+          Next
+        </button>
+      </div>
       <button
         onClick={() => window.history.back()}
         className="mt-4 bg-gray-500 text-white px-4 py-2 rounded-md dark-mode-button"
