@@ -1,4 +1,4 @@
-export const contractAddress = "your_senryu_game_contract_address";
+export const contractAddress = "0xBCE90b34786b47E883D321fC95eD2422a2C22737";
 
 export const abi = [
   {

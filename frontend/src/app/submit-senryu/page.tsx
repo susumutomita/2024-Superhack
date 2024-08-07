@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import { ethers } from 'ethers';
+import { BrowserProvider, Contract } from 'ethers';
 import { abi, contractAddress } from '../constants/contract';
 
 declare global {
@@ -26,13 +26,14 @@ export default function SubmitSenryu() {
     try {
       await window.ethereum.request({ method: 'eth_requestAccounts' });
 
-      const provider = new ethers.providers.Web3Provider(window.ethereum);
-      const signer = provider.getSigner();
-      const contract = new ethers.Contract(contractAddress, abi, signer);
+      const provider = new BrowserProvider(window.ethereum);
+      const signer = await provider.getSigner();
+      const contract = new Contract(contractAddress, abi, signer);
 
       await contract.submitSenryu(content);
       alert('Senryu submitted successfully!');
       setLoading(false);
+      setContent('');  // フォームをクリア
     } catch (error: any) {
       console.error('Error submitting senryu:', error);
       if (error.code === 4001) {
@@ -57,7 +58,7 @@ export default function SubmitSenryu() {
             className="mt-1 p-2 border rounded-md shadow-sm w-full dark-mode-input"
           />
         </div>
-        <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded-md dark-mode-button">
+        <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded-md dark-mode-button" disabled={loading}>
           Submit
         </button>
       </form>
