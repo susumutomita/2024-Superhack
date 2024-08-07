@@ -1,17 +1,19 @@
-'use client';
-import { useState, useEffect } from 'react';
-import { BrowserProvider, Contract } from 'ethers';
-import { abi, contractAddress } from '../constants/contract';
+"use client";
+import { useState, useEffect } from "react";
+import { BrowserProvider, Contract } from "ethers";
+import { abi, contractAddress } from "../constants/contract";
 
 export default function ViewSenryus() {
-  const [senryus, setSenryus] = useState<{ id: number, content: string, voteCount: number }[]>([]);
+  const [senryus, setSenryus] = useState<
+    { id: number; content: string; voteCount: number }[]
+  >([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchSenryus = async () => {
       setLoading(true);
       if (!window.ethereum) {
-        alert('MetaMask is not installed!');
+        alert("MetaMask is not installed!");
         setLoading(false);
         return;
       }
@@ -22,17 +24,19 @@ export default function ViewSenryus() {
         const contract = new Contract(contractAddress, abi, signer);
         const senryuList = await contract.getSenryus();
 
-        const formattedSenryus = senryuList.map((senryu: any, index: number) => ({
-          id: index,
-          content: senryu.content,
-          voteCount: senryu.voteCount,
-        }));
+        const formattedSenryus = senryuList.map(
+          (senryu: any, index: number) => ({
+            id: index,
+            content: senryu.content,
+            voteCount: senryu.voteCount,
+          }),
+        );
 
         setSenryus(formattedSenryus);
         setLoading(false);
       } catch (error) {
-        console.error('Error fetching senryus:', error);
-        alert('Failed to fetch senryus');
+        console.error("Error fetching senryus:", error);
+        alert("Failed to fetch senryus");
         setLoading(false);
       }
     };
@@ -43,13 +47,13 @@ export default function ViewSenryus() {
   const vote = async (senryuId: number) => {
     setLoading(true);
     if (!window.ethereum) {
-      alert('MetaMask is not installed!');
+      alert("MetaMask is not installed!");
       setLoading(false);
       return;
     }
 
     try {
-      await window.ethereum.request({ method: 'eth_requestAccounts' });
+      await window.ethereum.request({ method: "eth_requestAccounts" });
 
       const provider = new BrowserProvider(window.ethereum);
       const signer = await provider.getSigner();
@@ -67,11 +71,11 @@ export default function ViewSenryus() {
       setSenryus(formattedSenryus);
       setLoading(false);
     } catch (error: any) {
-      console.error('Error voting for senryu:', error);
+      console.error("Error voting for senryu:", error);
       if (error.code === 4001) {
-        alert('MetaMask access denied');
+        alert("MetaMask access denied");
       } else {
-        alert('Failed to vote for senryu');
+        alert("Failed to vote for senryu");
       }
       setLoading(false);
     }
@@ -83,15 +87,22 @@ export default function ViewSenryus() {
       <ul>
         {senryus.map((senryu, index) => (
           <li key={index} className="mb-2">
-            <strong>Content:</strong> {senryu.content}<br />
+            <strong>Content:</strong> {senryu.content}
+            <br />
             <strong>Votes:</strong> {senryu.voteCount}
-            <button onClick={() => vote(senryu.id)} className="ml-2 bg-blue-500 text-white px-2 py-1 rounded-md dark-mode-button">
+            <button
+              onClick={() => vote(senryu.id)}
+              className="ml-2 bg-blue-500 text-white px-2 py-1 rounded-md dark-mode-button"
+            >
               Vote
             </button>
           </li>
         ))}
       </ul>
-      <button onClick={() => window.history.back()} className="mt-4 bg-gray-500 text-white px-4 py-2 rounded-md dark-mode-button">
+      <button
+        onClick={() => window.history.back()}
+        className="mt-4 bg-gray-500 text-white px-4 py-2 rounded-md dark-mode-button"
+      >
         Back
       </button>
     </div>

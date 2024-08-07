@@ -1,10 +1,9 @@
 ---
 name: Feature Request
 about: Describe the feature you want to add or change
-title: ''
-labels: ''
-assignees: ''
-
+title: ""
+labels: ""
+assignees: ""
 ---
 
 ### Issue Title
