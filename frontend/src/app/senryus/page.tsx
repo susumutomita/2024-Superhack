@@ -1,6 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { ethers } from 'ethers';
+import { BrowserProvider, Contract } from 'ethers';
 import { abi, contractAddress } from '../constants/contract';
 
 export default function ViewSenryus() {
@@ -17,12 +17,18 @@ export default function ViewSenryus() {
       }
 
       try {
-        const provider = new ethers.providers.Web3Provider(window.ethereum);
-        const signer = provider.getSigner();
-        const contract = new ethers.Contract(contractAddress, abi, signer);
+        const provider = new BrowserProvider(window.ethereum);
+        const signer = await provider.getSigner();
+        const contract = new Contract(contractAddress, abi, signer);
         const senryuList = await contract.getSenryus();
 
-        setSenryus(senryuList);
+        const formattedSenryus = senryuList.map((senryu: any, index: number) => ({
+          id: index,
+          content: senryu.content,
+          voteCount: senryu.voteCount,
+        }));
+
+        setSenryus(formattedSenryus);
         setLoading(false);
       } catch (error) {
         console.error('Error fetching senryus:', error);
@@ -45,13 +51,20 @@ export default function ViewSenryus() {
     try {
       await window.ethereum.request({ method: 'eth_requestAccounts' });
 
-      const provider = new ethers.providers.Web3Provider(window.ethereum);
-      const signer = provider.getSigner();
-      const contract = new ethers.Contract(contractAddress, abi, signer);
+      const provider = new BrowserProvider(window.ethereum);
+      const signer = await provider.getSigner();
+      const contract = new Contract(contractAddress, abi, signer);
 
       await contract.vote(senryuId);
       const senryuList = await contract.getSenryus();
-      setSenryus(senryuList);
+
+      const formattedSenryus = senryuList.map((senryu: any, index: number) => ({
+        id: index,
+        content: senryu.content,
+        voteCount: senryu.voteCount,
+      }));
+
+      setSenryus(formattedSenryus);
       setLoading(false);
     } catch (error: any) {
       console.error('Error voting for senryu:', error);
