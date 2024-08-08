@@ -35,15 +35,12 @@ body {
 body {
   background-color: #000;
   color: #fff;
-  /* ここを確認 */
 }
 
 input,
 textarea {
   color: #000;
-  /* 必要に応じて調整 */
   background-color: #fff;
-  /* 必要に応じて調整 */
 }
 
 button {
