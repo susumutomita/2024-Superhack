@@ -36,6 +36,15 @@ export default function Home() {
             View Top Senryu
           </Button>
         </Link>
+        <Link href="/signup" passHref>
+          <Button
+            variant="contained"
+            color="primary"
+            className="bg-blue-500 hover:bg-blue-700"
+          >
+            signup
+          </Button>
+        </Link>
       </div>
     </Container>
   );
