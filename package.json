@@ -19,7 +19,7 @@
     "lint-staged": "lint-staged",
     "husky": "husky install",
     "start": "concurrently \"npm start --prefix frontend\" \"npm start --prefix backend\"",
-    "install-all": "npm install && npm install --prefix frontend && npm install --prefix backend"
+    "install-all": "npm install && npm install --prefix frontend"
   },
   "keywords": [],
   "author": "Susumu Tomita <oyter880@gmail.com> (https://susumutomita.netlify.app/)",
