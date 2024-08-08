@@ -3,8 +3,10 @@
 import { VerificationLevel, IDKitWidget, useIDKit } from "@worldcoin/idkit";
 import type { ISuccessResult } from "@worldcoin/idkit";
 import { verify } from "./actions/verify";
+import { useAuth } from "../context/AuthContext";
 
-export default function SignupPage() {
+export default function Signup() {
+  const { setIsVerified } = useAuth(); // 認証状態を管理するための関数を取得
   const app_id = process.env.NEXT_PUBLIC_WLD_APP_ID as `app_${string}`;
   const action = process.env.NEXT_PUBLIC_WLD_ACTION;
 
@@ -18,8 +20,9 @@ export default function SignupPage() {
   const { setOpen } = useIDKit();
 
   const onSuccess = (result: ISuccessResult) => {
-    // This is where you should perform frontend actions once a user has been verified, such as redirecting to a new page
-    window.alert(
+    // 認証が成功したら認証状態をtrueに設定
+    setIsVerified(true);
+    console.log(
       "Successfully verified with World ID! Your nullifier hash is: " +
         result.nullifier_hash,
     );
