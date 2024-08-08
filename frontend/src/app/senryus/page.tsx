@@ -3,10 +3,14 @@ import { useState, useEffect } from "react";
 import { BrowserProvider, Contract } from "ethers";
 import { abi, contractAddress } from "../constants/contract";
 
+interface Senryu {
+  id: number;
+  content: string;
+  voteCount: number;
+}
+
 export default function ViewSenryus() {
-  const [senryus, setSenryus] = useState<
-    { id: number; content: string; voteCount: number }[]
-  >([]);
+  const [senryus, setSenryus] = useState<Senryu[]>([]);
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
   const pageSize = 10; // 一度に取得するSenryuの数
@@ -24,14 +28,10 @@ export default function ViewSenryus() {
         const provider = new BrowserProvider(window.ethereum);
         const signer = await provider.getSigner();
         const contract = new Contract(contractAddress, abi, signer);
-        const senryuList = await contract.getSenryus(page, pageSize);
-
-        const formattedSenryus = senryuList.map(
-          (senryu: any, index: number) => ({
-            id: senryu.id,
-            content: senryu.content,
-            voteCount: senryu.voteCount,
-          }),
+        const formattedSenryus = await fetchSenryusData(
+          page,
+          pageSize,
+          contract,
         );
 
         setSenryus(formattedSenryus);
@@ -62,14 +62,7 @@ export default function ViewSenryus() {
       const contract = new Contract(contractAddress, abi, signer);
 
       await contract.vote(senryuId);
-      const senryuList = await contract.getSenryus(page, pageSize);
-
-      const formattedSenryus = senryuList.map((senryu: any) => ({
-        id: senryu.id,
-        content: senryu.content,
-        voteCount: senryu.voteCount,
-      }));
-
+      const formattedSenryus = await fetchSenryusData(page, pageSize, contract);
       setSenryus(formattedSenryus);
       setLoading(false);
     } catch (error: any) {
@@ -90,7 +83,9 @@ export default function ViewSenryus() {
   };
 
   const handleNextPage = () => {
-    setPage(page + 1);
+    if (senryus.length === pageSize) {
+      setPage(page + 1);
+    }
   };
 
   return (
@@ -139,3 +134,16 @@ export default function ViewSenryus() {
     </div>
   );
 }
+
+const fetchSenryusData = async (
+  page: number,
+  pageSize: number,
+  contract: Contract,
+) => {
+  const senryuList = await contract.getSenryus(page, pageSize);
+  return senryuList.map((senryu: Senryu) => ({
+    id: senryu.id,
+    content: senryu.content,
+    voteCount: senryu.voteCount,
+  }));
+};
