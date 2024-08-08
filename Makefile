@@ -43,27 +43,15 @@ before_commit: lint gas format_contract	format_check	test_contract
 
 .PHONY: start_frontend
 start_frontend:
-	cd frontend && npm start
-
-.PHONY: start_backend
-start_backend:
-	cd backend && npm start
+	cd frontend && npm run dev
 
 .PHONY: start
 start:
-	npx concurrently "make start_backend" "make start_frontend"
+	npx concurrently "make start_frontend"
 
 .PHONY: build_backend
 build_backend:
 	cd backend && forge build
-
-.PHONY: copy_abi
-copy_abi: build_backend
-	mkdir -p frontend/artifacts/contracts/SenryuGame.sol
-	cp backend/out/SenryuGame.sol/SenryuGame.json frontend/artifacts/contracts/SenryuGame.sol/SenryuGame.json
-
-.PHONY: all
-all: build_backend copy_abi
 
 .PHONY: help
 help:
@@ -80,9 +68,6 @@ help:
 	@echo "  test_contract   Test contract"
 	@echo "  before_commit   Run checks before commit"
 	@echo "  start_frontend  Start frontend"
-	@echo "  start_backend   Start backend"
-	@echo "  start           Start both frontend and backend"
+	@echo "  start           Start frontend"
 	@echo "  build_backend   Build backend contracts with Forge"
-	@echo "  copy_abi        Copy ABI files to frontend"
-	@echo "  all             Build backend and copy ABI files"
 	@echo "  help            Show this help message"

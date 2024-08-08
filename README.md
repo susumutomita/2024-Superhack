@@ -47,11 +47,9 @@ Drink & Discover World is a decentralized application (dApp) designed to facilit
 
 ## Technologies Used
 
-- **Blockchain Platform**: Metal L2
+- **Blockchain Platform**: Base
 - **Smart Contracts**: Solidity
-- **Front-end**: React
-- **Back-end**: Node.js, Express
-- **Database**: IPFS (InterPlanetary File System)
+- **Front-end**: Next.js
 - **Authentication**: World ID
 
 ## Images
@@ -62,7 +60,7 @@ Drink & Discover World is a decentralized application (dApp) designed to facilit
 
 ## System Overview
 
-Drink & Discover World consists of a front-end built with React and a back-end powered by Node.js and Express. The system leverages smart contracts on the Metal L2 blockchain to handle event scheduling, game participation, voting, and payments. IPFS is used to store detailed event and game information, ensuring data persistence and immutability. This decentralized approach ensures that no sensitive information is stored on a central server, enhancing user privacy.
+Drink & Discover World consists of a front-end built with Next.js and a back-end powered by Node.js and Express. The system leverages smart contracts on the Base blockchain to handle event scheduling, game participation, voting, and payments. This decentralized approach ensures that no sensitive information is stored on a central server, enhancing user privacy.
 
 ## Screenshots
 
@@ -76,29 +74,26 @@ Drink & Discover World consists of a front-end built with React and a back-end p
 
    ```bash
    git clone https://github.com/susumutomita/2024-Superhack
-   cd drink-discover-world
+   cd 2024-Superhack
    ```
 
 2. **Install dependencies**:
 
    ```bash
-   npm install
-   cd client && npm install
+   make install_all
    ```
 
 3. **Set up environment variables**:
-   Create a `.env` file in the `backend/` directory and add necessary configurations.
+   Set environment variables below
 
    ```plaintext
-   REACT_APP_CONTRACT_ADDRESS=<Your Contract Address>
-   OPENAI_API_KEY=<Your OpenAI API Key>
-   WORLD_ID_API_KEY=<Your World ID API Key>
-   NODE_ENV=<development | production>
+   NEXT_PUBLIC_WLD_APP_ID=<Your World ID App ID>
+   NEXT_PUBLIC_WLD_ACTION=<Your World ID Action>
    ```
 
-4. **Run the server**:
+4. **Run the development server**:
    ```bash
-   npm run start
+   make start
    ```
 
 ## Usage
