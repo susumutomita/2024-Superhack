@@ -51,7 +51,9 @@ export default function TopSenryu() {
   };
 
   const handleNextPage = () => {
-    setPage(page + 1);
+    if (topSenryus.length === pageSize) {
+      setPage(page + 1);
+    }
   };
 
   return (
