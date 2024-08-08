@@ -1,30 +1,42 @@
 "use client";
 import Link from "next/link";
+import { Button, Container, Typography } from "@mui/material";
 
 export default function Home() {
   return (
-    <div className="container mx-auto p-4 dark-mode-bg">
-      <h1 className="text-2xl font-bold mb-4">Welcome to Senryu Game</h1>
+    <Container>
+      <Typography variant="h3" component="h1" gutterBottom>
+        Welcome to Senryu Game
+      </Typography>
       <div className="space-x-4">
-        <Link
-          href="/submit-senryu"
-          className="inline-block bg-blue-500 text-white px-4 py-2 rounded-md dark-mode-button"
-        >
-          Submit Senryu
+        <Link href="/submit-senryu" passHref>
+          <Button
+            variant="contained"
+            color="primary"
+            className="bg-blue-500 hover:bg-blue-700"
+          >
+            Submit Senryu
+          </Button>
         </Link>
-        <Link
-          href="/senryus"
-          className="inline-block bg-blue-500 text-white px-4 py-2 rounded-md dark-mode-button"
-        >
-          View Senryus
+        <Link href="/senryus" passHref>
+          <Button
+            variant="contained"
+            color="primary"
+            className="bg-blue-500 hover:bg-blue-700"
+          >
+            View Senryus
+          </Button>
         </Link>
-        <Link
-          href="/top-senryu"
-          className="inline-block bg-blue-500 text-white px-4 py-2 rounded-md dark-mode-button"
-        >
-          View Top Senryu
+        <Link href="/top-senryu" passHref>
+          <Button
+            variant="contained"
+            color="primary"
+            className="bg-blue-500 hover:bg-blue-700"
+          >
+            View Top Senryu
+          </Button>
         </Link>
       </div>
-    </div>
+    </Container>
   );
 }
