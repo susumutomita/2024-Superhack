@@ -1,51 +1,55 @@
 "use client";
-import Link from "next/link";
-import { Button, Container, Typography } from "@mui/material";
+
+import { useAuth } from "./context/AuthContext";
+import { IDKitWidget, VerificationLevel, useIDKit } from "@worldcoin/idkit";
+import type { ISuccessResult } from "@worldcoin/idkit";
+import { verify } from "./context/verify";
 
 export default function Home() {
+  const { setIsVerified } = useAuth();
+  const app_id = process.env.NEXT_PUBLIC_WLD_APP_ID as `app_${string}`;
+  const action = process.env.NEXT_PUBLIC_WLD_ACTION;
+
+  if (!app_id || !action) {
+    throw new Error("App ID and Action are not set in environment variables!");
+  }
+
+  const { setOpen } = useIDKit();
+
+  const onSuccess = (result: ISuccessResult) => {
+    setIsVerified(true);
+    console.log(
+      "Successfully verified with World ID! Your nullifier hash is: " +
+        result.nullifier_hash,
+    );
+    window.location.href = "/top";
+  };
+
+  const handleProof = async (result: ISuccessResult) => {
+    const data = await verify(result);
+    if (data.success) {
+      setIsVerified(true);
+    } else {
+      throw new Error(`Verification failed: ${data.detail}`);
+    }
+  };
+
   return (
-    <Container>
-      <Typography variant="h3" component="h1" gutterBottom>
-        Welcome to Senryu Game
-      </Typography>
-      <div className="space-x-4">
-        <Link href="/submit-senryu" passHref>
-          <Button
-            variant="contained"
-            color="primary"
-            className="bg-blue-500 hover:bg-blue-700"
-          >
-            Submit Senryu
-          </Button>
-        </Link>
-        <Link href="/senryus" passHref>
-          <Button
-            variant="contained"
-            color="primary"
-            className="bg-blue-500 hover:bg-blue-700"
-          >
-            View Senryus
-          </Button>
-        </Link>
-        <Link href="/top-senryu" passHref>
-          <Button
-            variant="contained"
-            color="primary"
-            className="bg-blue-500 hover:bg-blue-700"
-          >
-            View Top Senryu
-          </Button>
-        </Link>
-        <Link href="/signup" passHref>
-          <Button
-            variant="contained"
-            color="primary"
-            className="bg-blue-500 hover:bg-blue-700"
-          >
-            signup
-          </Button>
-        </Link>
-      </div>
-    </Container>
+    <div className="flex flex-col items-center justify-center h-screen">
+      <h1 className="text-3xl mb-5">ようこそ！入店のために認証してください</h1>
+      <IDKitWidget
+        action={action}
+        app_id={app_id}
+        onSuccess={onSuccess}
+        handleVerify={handleProof}
+        verification_level={VerificationLevel.Orb}
+      />
+      <button
+        className="mt-4 bg-blue-500 text-white px-4 py-2 rounded-md"
+        onClick={() => setOpen(true)}
+      >
+        Enter
+      </button>
+    </div>
   );
 }
