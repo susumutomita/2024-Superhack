@@ -5,19 +5,19 @@
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/susumutomita/2024-Superhack)
 ![GitHub repo size](https://img.shields.io/github/repo-size/susumutomita/2024-Superhack)
 
-# Drink & Discover World
+# Onchain Senryu
 
-ETH Global Link: [Drink & Discover World Showcase](https://ethglobal.com/showcase/drink-and-discoverworld-sfbo5)
+ETH Global Link: [Onchain Senryu Showcase](https://ethglobal.com/showcase/onchain-senryu)
 
 <div style="text-align: center;">
-  <img src="./images/logo.png" width="200" height="200" alt="Drink & Discover World Logo"/>
+  <img src="./images/logo.png" width="200" height="200" alt="Onchain Senryu Logo"/>
 </div>
 
-Drink & Discover World is an innovative platform that combines the unique drinking cultures of various countries with blockchain technology. Users can schedule and join virtual drinking events, participate in traditional and modern drinking games, and enjoy a transparent, privacy-focused experience. Our mission is to foster cultural exchange and international understanding through the shared experience of social drinking.
+**Onchain Senryu** is a unique platform that merges the traditional Japanese art of senryu (a form of haiku) with the cutting-edge technology of blockchain. Users can create, share, and vote on senryu poems, all while ensuring authenticity and transparency through the use of smart contracts on the Base blockchain.
 
 ## Table of Contents
 
-- [Drink \& Discover World](#drink--discover-world)
+- [Onchain Senryu](#onchain-senryu)
   - [Table of Contents](#table-of-contents)
   - [Introduction](#introduction)
   - [Features](#features)
@@ -34,15 +34,13 @@ Drink & Discover World is an innovative platform that combines the unique drinki
 
 ## Introduction
 
-Drink & Discover World is a decentralized application (dApp) designed to facilitate cultural exchange through virtual drinking events. Users can organize and join drinking parties, participate in traditional drinking games like Senryu (Japanese poetry) competitions, and benefit from a transparent and privacy-focused experience provided by blockchain technology. This platform aims to introduce and celebrate various global drinking cultures, encouraging mutual understanding and appreciation.
+**Onchain Senryu** is a decentralized application (dApp) that allows users to engage with the traditional Japanese art form of senryu. Users can create senryu poems with the help of AI, submit their creations to the blockchain for permanent record, and participate in a community-driven voting process to rank the best senryu. This platform ensures the authenticity of each senryu and leverages the transparency and immutability of blockchain technology.
 
 ## Features
 
-- **Global Drinking Event Scheduler**: Organize and schedule virtual drinking events with participants from around the world.
-- **Interactive Drinking Games**: Participate in traditional and modern drinking games from different cultures, such as Senryu competitions, quizzes, and more.
-- **Real-time Voting**: Conduct real-time voting on games and activities, recorded on the blockchain for transparency and fairness.
-- **Reward System**: Earn tokens and NFTs based on the popularity of your contributions.
-- **Crypto Payments**: Automate payments and bill splitting using smart contracts, supporting both "warikan" (equal split) and "keisha wari" (proportional split based on age or rank).
+- **AI-Assisted Senryu Creation**: Generate senryu poems with the help of AI by providing a prompt or theme.
+- **Blockchain-Backed Submission**: Permanently submit your senryu to the Base blockchain, ensuring authenticity and ownership.
+- **Community Voting**: Participate in voting on your favorite senryu, with results recorded on the blockchain for transparency.
 - **World ID Integration**: Secure user authentication and bot prevention using World ID.
 
 ## Technologies Used
@@ -50,22 +48,23 @@ Drink & Discover World is a decentralized application (dApp) designed to facilit
 - **Blockchain Platform**: Base
 - **Smart Contracts**: Solidity
 - **Front-end**: Next.js
+- **AI Integration**: Groq API for AI-generated senryu
 - **Authentication**: World ID
 
 ## Images
 
 <div style="text-align: center;">
-  <img src="./images/drink-discover-world-diagram.png" width="400" height="400" alt="System Overview"/>
+  <img src="./images/onchain-senryu-diagram.png" width="400" height="400" alt="System Overview"/>
 </div>
 
 ## System Overview
 
-Drink & Discover World consists of a front-end built with Next.js and a back-end powered by Node.js and Express. The system leverages smart contracts on the Base blockchain to handle event scheduling, game participation, voting, and payments. This decentralized approach ensures that no sensitive information is stored on a central server, enhancing user privacy.
+**Onchain Senryu** consists of a front-end built with Next.js and a block chain back-end powered by Foundry. The system leverages smart contracts on the Base blockchain to handle senryu submissions and voting. AI integration through the Groq API allows users to generate senryu with ease. This decentralized approach ensures that every poem is verifiable and immutable, preserving the art form for future generations.
 
 ## Screenshots
 
 <div style="text-align: center;">
-  <img src="./images/drink-discover-world-screenshot.png" width="400" height="300" alt="Drink & Discover World Screenshot"/>
+  <img src="./images/onchain-senryu-screenshot.png" width="400" height="300" alt="Onchain Senryu Screenshot"/>
 </div>
 
 ## Installation
@@ -89,6 +88,7 @@ Drink & Discover World consists of a front-end built with Next.js and a back-end
    ```plaintext
    NEXT_PUBLIC_WLD_APP_ID=<Your World ID App ID>
    NEXT_PUBLIC_WLD_ACTION=<Your World ID Action>
+   GROQ_API_KEY=<Groq API key>
    ```
 
 4. **Run the development server**:
@@ -99,18 +99,18 @@ Drink & Discover World consists of a front-end built with Next.js and a back-end
 ## Usage
 
 - Open your browser and navigate to `http://localhost:3000`.
-- Organize virtual drinking events, participate in interactive drinking games, vote in real-time, and automate payments.
+- Create senryu poems, submit them to the blockchain, and vote on your favorites in the community.
 
 ## Future Prospects
 
-- **Expansion of Partner Businesses**: Increase the number of partner businesses offering rewards.
-- **Global Competitions**: Host global competitions with higher stakes and bigger rewards.
-- **Enhanced User Experience**: Improve the UI/UX based on user feedback.
-- **Cultural Content Expansion**: Add more content about different drinking cultures and social customs worldwide.
+- **Multilingual Support**: Expand the platform to support senryu creation and interaction in multiple languages.
+- **Enhanced AI Features**: Integrate more advanced AI capabilities to offer users deeper insights and creative options for senryu creation.
+- **Visual Content Integration**: Add the ability to attach images or videos to senryu, enhancing the overall experience.
+- **Global Competitions**: Host international senryu competitions with rewards and recognition.
 
 ## Contributing
 
-We welcome contributions to Drink & Discover World. Please fork the repository and submit pull requests for review. For major changes, please open an issue first to discuss what you would like to change.
+We welcome contributions to Onchain Senryu. Please fork the repository and submit pull requests for review. For major changes, please open an issue first to discuss what you would like to change.
 
 ## License
 
