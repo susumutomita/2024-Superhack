@@ -16,6 +16,12 @@ export default function SubmitSenryu() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!content.trim()) {
+      alert("Senryu content cannot be empty!");
+      return;
+    }
+
     setLoading(true);
 
     if (!window.ethereum) {
