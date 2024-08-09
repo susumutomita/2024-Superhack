@@ -32,6 +32,8 @@ export default function TopSenryu() {
           voteCount: senryu.voteCount,
         }));
 
+        console.log("Formatted senryus:", formattedSenryus);
+
         setTopSenryus(formattedSenryus);
         setLoading(false);
       } catch (error) {
@@ -63,13 +65,16 @@ export default function TopSenryu() {
         <p>Loading...</p>
       ) : (
         <ul>
-          {topSenryus.map((senryu) => (
-            <li key={senryu.id} className="mb-2">
-              <strong>Content:</strong> {senryu.content}
-              <br />
-              <strong>Votes:</strong> {senryu.voteCount}
-            </li>
-          ))}
+          {topSenryus
+            .filter((senryu) => senryu.content) // 空のコンテンツを除外
+            .map((senryu) => (
+              <li key={senryu.id.toString()} className="mb-2">
+                <strong>Content:</strong> {senryu.content || "No Content"}{" "}
+                {/* デフォルトの表示 */}
+                <br />
+                <strong>Votes:</strong> {senryu.voteCount.toString()}
+              </li>
+            ))}
         </ul>
       )}
       <div className="mt-4 flex justify-between">

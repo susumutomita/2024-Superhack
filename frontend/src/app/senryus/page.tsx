@@ -141,9 +141,11 @@ const fetchSenryusData = async (
   contract: Contract,
 ) => {
   const senryuList = await contract.getSenryus(page, pageSize);
-  return senryuList.map((senryu: Senryu) => ({
-    id: senryu.id,
-    content: senryu.content,
-    voteCount: senryu.voteCount,
-  }));
+  return senryuList
+    .map((senryu: Senryu) => ({
+      id: senryu.id,
+      content: senryu.content,
+      voteCount: senryu.voteCount,
+    }))
+    .filter((senryu: Senryu) => senryu.content.trim() !== ""); // 空のコンテンツをフィルタリング
 };
