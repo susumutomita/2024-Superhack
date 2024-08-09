@@ -27,13 +27,13 @@ export default function Home() {
             View Senryus
           </Button>
         </Link>
-        <Link href="/top-senryu" passHref>
+        <Link href="/vote-result" passHref>
           <Button
             variant="contained"
             color="primary"
             className="bg-blue-500 hover:bg-blue-700"
           >
-            View Top Senryu
+            Vote Result
           </Button>
         </Link>
       </div>

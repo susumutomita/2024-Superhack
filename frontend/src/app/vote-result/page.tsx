@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { BrowserProvider, Contract } from "ethers";
 import { abi, contractAddress } from "../constants/contract";
 
-export default function TopSenryu() {
+export default function VoteResult() {
   const [topSenryus, setTopSenryus] = useState<
     { id: number; content: string; voteCount: number }[]
   >([]);
@@ -60,7 +60,7 @@ export default function TopSenryu() {
 
   return (
     <div className="container mx-auto p-4 dark-mode-bg">
-      <h1 className="text-2xl font-bold mb-4">Top Senryus</h1>
+      <h1 className="text-2xl font-bold mb-4">Vote Result</h1>
       {loading ? (
         <p>Loading...</p>
       ) : (
