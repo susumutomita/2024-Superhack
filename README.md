@@ -59,7 +59,7 @@ ETH Global Link: [Onchain Senryu Showcase](https://ethglobal.com/showcase/onchai
 
 ## System Overview
 
-**Onchain Senryu** consists of a front-end built with Next.js and a block chain back-end powered by Foundry. The system leverages smart contracts on the Base blockchain to handle senryu submissions and voting. AI integration through the Groq API allows users to generate senryu with ease. This decentralized approach ensures that every poem is verifiable and immutable, preserving the art form for future generations.
+**Onchain Senryu** consists of a front-end built with Next.js and a blockchain back-end powered by Foundry. The system leverages smart contracts on the Base blockchain to handle senryu submissions and voting. AI integration through the Groq API allows users to generate senryu with ease. This decentralized approach ensures that every poem is verifiable and immutable, preserving the art form for future generations.
 
 ## Screenshots
 

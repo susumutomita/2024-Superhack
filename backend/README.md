@@ -1,10 +1,10 @@
-# Drink & Discover World Backend
+# Onchain Senryu Backend
 
-This directory contains the backend components of the Drink & Discover World project. It includes the smart contracts, deployment scripts, and configurations necessary to deploy and interact with the blockchain-based senryu game system.
+This directory contains the backend components of the **Onchain Senryu** project. It includes the smart contracts, deployment scripts, and configurations necessary to deploy and interact with the blockchain-based senryu platform.
 
 ## Table of Contents
 
-- [Drink \& Discover World Backend](#drink--discover-world-backend)
+- [Onchain Senryu Backend](#onchain-senryu-backend)
   - [Table of Contents](#table-of-contents)
   - [Introduction](#introduction)
   - [Technologies Used](#technologies-used)
@@ -18,38 +18,38 @@ This directory contains the backend components of the Drink & Discover World pro
     - [Interacting with the Smart Contract](#interacting-with-the-smart-contract)
   - [Future Prospects](#future-prospects)
   - [Contributing](#contributing)
+  - [License](#license)
 
 ## Introduction
 
-The Drink & Discover World backend is built using Foundry for developing and deploying Solidity smart contracts. These contracts handle the submission and voting of senryu poems. By leveraging blockchain technology, Drink & Discover World ensures that all data is transparent, immutable, and privacy-preserving.
+The **Onchain Senryu** backend is built using Foundry for developing and deploying Solidity smart contracts. These contracts handle the submission and voting of senryu poems on the Base blockchain. By leveraging blockchain technology, **Onchain Senryu** ensures that all data is transparent, immutable, and verifiable.
 
 ## Technologies Used
 
-- **Blockchain Platform**: Metal L2
+- **Blockchain Platform**: Base
 - **Smart Contracts**: Solidity
 - **Development Framework**: Foundry
-- **Decentralized Storage**: IPFS
 
 ## Directory Structure
 
 ```plaintext
 backend/
 ├── contracts/
-│   └── SenryuGame.sol      # Smart contract for senryu game
+│   └── SenryuGame.sol           # Smart contract for senryu submission and voting
 ├── scripts/
-│   └── deploy_SenryuGame.s.sol # Deployment script
+│   └── deploy_SenryuGame.s.sol  # Deployment script
 ├── test/
-│   └── SenryuGame.t.sol    # Test file for the smart contract
-├── .env                    # Environment variables
-├── foundry.toml            # Foundry configuration file
-└── README.md               # This README file
+│   └── SenryuGame.t.sol         # Test file for the smart contract
+├── .env                         # Environment variables
+├── foundry.toml                 # Foundry configuration file
+└── README.md                    # This README file
 ```
 
 ## Installation
 
 ### Prerequisites
 
-- Foundry: Make sure you have Foundry installed. You can install it by running:
+- **Foundry**: Make sure you have Foundry installed. You can install it by running:
 
   ```bash
   curl -L https://foundry.paradigm.xyz | bash
@@ -77,6 +77,7 @@ backend/
    ```plaintext
    PRIVATE_KEY=<Your_Private_Key>
    RPC_URL=<Your_RPC_URL>
+   YOUR_ADDRESS=<Your_Wallet_Address>
    ```
 
 ## Deployment
@@ -92,7 +93,7 @@ To deploy the smart contract to the blockchain, follow these steps:
 2. **Deploy the smart contract**:
 
    ```shell
-   forge script script/SenryuGame.s.sol:SenryuGameScript --rpc-url $RPC_URL --broadcast --sender $YOUR_ADDRESS --private-key $PRIVATE_KEY
+   forge script script/deploy_SenryuGame.s.sol:SenryuGameScript --rpc-url $RPC_URL --broadcast --sender $YOUR_ADDRESS --private-key $PRIVATE_KEY
    ```
 
 ## Testing
@@ -131,9 +132,13 @@ You can interact with the deployed smart contract using `cast`, Foundry's CLI to
 
 ## Future Prospects
 
-- **Enhanced Features**: Plan to add more sophisticated voting mechanisms and reward systems.
-- **Integration with Frontend**: Continuous integration with the frontend for a seamless user experience.
+- **Enhanced Voting Mechanisms**: Explore more sophisticated voting and ranking algorithms for senryu poems.
+- **Multilingual Support**: Add support for creating and interacting with senryu in multiple languages.
 
 ## Contributing
 
-We welcome contributions to the Drink & Discover World project. Please fork the repository and submit pull requests for review. For major changes, please open an issue first to discuss what you would like to change.
+We welcome contributions to the **Onchain Senryu** project. Please fork the repository and submit pull requests for review. For major changes, please open an issue first to discuss what you would like to change.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](../LICENSE) file for details.
