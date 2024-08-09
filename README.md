@@ -7,7 +7,7 @@
 
 # Onchain Senryu
 
-ETH Global Link: [Onchain Senryu Showcase](https://ethglobal.com/showcase/onchain-senryu)
+ETH Global Link: [Onchain Senryu Showcase](https://ethglobal.com/showcase/onchain-senryu-sfbo5)
 
 <div style="text-align: center;">
   <img src="./images/logo.png" width="200" height="200" alt="Onchain Senryu Logo"/>
