@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { BrowserProvider, Contract } from "ethers";
 import { abi, contractAddress } from "../constants/contract";
-import { useAuth } from "../context/AuthContext";
 
 declare global {
   interface Window {
@@ -14,7 +13,6 @@ declare global {
 export default function SubmitSenryu() {
   const [content, setContent] = useState("");
   const [loading, setLoading] = useState(false);
-  const { isVerified } = useAuth(); // 認証状態を取得
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -32,7 +30,6 @@ export default function SubmitSenryu() {
       const provider = new BrowserProvider(window.ethereum);
       const signer = await provider.getSigner();
       const contract = new Contract(contractAddress, abi, signer);
-
       await contract.submitSenryu(content);
       alert("Senryu submitted successfully!");
       setLoading(false);
@@ -61,13 +58,12 @@ export default function SubmitSenryu() {
             value={content}
             onChange={(e) => setContent(e.target.value)}
             className="mt-1 p-2 border rounded-md shadow-sm w-full dark-mode-input"
-            disabled={!isVerified} // 認証されていない場合は入力を無効化
           />
         </div>
         <button
           type="submit"
           className="bg-blue-500 text-white px-4 py-2 rounded-md dark-mode-button"
-          disabled={loading || !isVerified} // 認証されていない場合はボタンを無効化
+          disabled={loading}
         >
           Submit
         </button>
