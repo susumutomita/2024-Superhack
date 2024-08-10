@@ -1,7 +1,5 @@
 "use client";
 import { useState, useEffect } from "react";
-import { BrowserProvider, Contract } from "ethers";
-import { abi, contractAddress } from "../constants/contract";
 
 export default function VoteResult() {
   const [topSenryus, setTopSenryus] = useState<
@@ -14,31 +12,17 @@ export default function VoteResult() {
   useEffect(() => {
     const fetchTopSenryus = async () => {
       setLoading(true);
-      if (!window.ethereum) {
-        alert("MetaMask is not installed!");
-        setLoading(false);
-        return;
-      }
-
       try {
-        const provider = new BrowserProvider(window.ethereum);
-        const signer = await provider.getSigner();
-        const contract = new Contract(contractAddress, abi, signer);
-        const senryuList = await contract.getTopSenryus(page, pageSize);
+        const response = await fetch(
+          `/api/get-senryu-results?page=${page}&pageSize=${pageSize}`,
+        );
+        const data = await response.json();
 
-        const formattedSenryus = senryuList.map((senryu: any) => ({
-          id: senryu.id,
-          content: senryu.content,
-          voteCount: senryu.voteCount,
-        }));
-
-        console.log("Formatted senryus:", formattedSenryus);
-
-        setTopSenryus(formattedSenryus);
-        setLoading(false);
+        setTopSenryus(data.topSenryus);
       } catch (error) {
         console.error("Error fetching top senryus:", error);
         alert("Failed to fetch top senryus");
+      } finally {
         setLoading(false);
       }
     };
@@ -70,7 +54,6 @@ export default function VoteResult() {
             .map((senryu) => (
               <li key={senryu.id.toString()} className="mb-2">
                 <strong>Content:</strong> {senryu.content || "No Content"}{" "}
-                {/* デフォルトの表示 */}
                 <br />
                 <strong>Votes:</strong> {senryu.voteCount.toString()}
               </li>
