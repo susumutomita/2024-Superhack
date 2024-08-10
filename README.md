@@ -13,53 +13,94 @@ ETH Global Link: [Onchain Senryu Showcase](https://ethglobal.com/showcase/onchai
   <img src="./images/logo.png" width="200" height="200" alt="Onchain Senryu Logo"/>
 </div>
 
-**Onchain Senryu** is a unique platform that merges the traditional Japanese art of senryu (a form of haiku) with the cutting-edge technology of blockchain. Users can create, share, and vote on senryu poems, all while ensuring authenticity and transparency through the use of smart contracts on the Base blockchain.
+**Onchain Senryu** is a platform that mixes the Japanese art of senryu (a type of haiku) with blockchain. Users can make, share, and vote on senryu poems. Everything is saved on the Base blockchain to keep it authentic and transparent.
 
 ## Table of Contents
 
 - [Onchain Senryu](#onchain-senryu)
   - [Table of Contents](#table-of-contents)
   - [Introduction](#introduction)
+    - [Cultural and Global Impact](#cultural-and-global-impact)
   - [Features](#features)
   - [Technologies Used](#technologies-used)
-  - [Images](#images)
   - [System Overview](#system-overview)
+  - [Prize Categories \& Criteria](#prize-categories--criteria)
+    - [Judging Criteria](#judging-criteria)
+    - [Targeted Prizes](#targeted-prizes)
   - [Screenshots](#screenshots)
   - [Installation](#installation)
   - [Usage](#usage)
   - [Future Prospects](#future-prospects)
+  - [Usage](#usage-1)
+  - [Future Prospects](#future-prospects-1)
   - [Contributing](#contributing)
   - [License](#license)
   - [The Team](#the-team)
 
 ## Introduction
 
-**Onchain Senryu** is a decentralized application (dApp) that allows users to engage with the traditional Japanese art form of senryu. Users can create senryu poems with the help of AI, submit their creations to the blockchain for permanent record, and participate in a community-driven voting process to rank the best senryu. This platform ensures the authenticity of each senryu and leverages the transparency and immutability of blockchain technology.
+**Onchain Senryu** is a decentralized app where users can enjoy making senryu poems. With help from AI, users create senryu, submit them to the blockchain, and vote on the best ones. The platform uses blockchain to make sure all poems are authentic and can't be changed.
+
+### Cultural and Global Impact
+
+Senryu is very popular in Japan, but many people around the world don't know about it. To let more people enjoy senryu, **Onchain Senryu** uses AI to help users from different cultures create senryu poems easily. This way, everyone can have fun with senryu, no matter where they are from.
+
+In Japan, there's a popular contest called **"[サラリーマン川柳 (Salaryman Senryu)](https://event.dai-ichi-life.co.jp/company/senryu/)"** where people make funny and clever poems about their daily lives. I hope that **Onchain Senryu** will inspire people from all over the world to create and share senryu that reflects their own lives.
 
 ## Features
 
-- **AI-Assisted Senryu Creation**: Generate senryu poems with the help of AI by providing a prompt or theme.
-- **Blockchain-Backed Submission**: Permanently submit your senryu to the Base blockchain, ensuring authenticity and ownership.
-- **Community Voting**: Participate in voting on your favorite senryu, with results recorded on the blockchain for transparency.
-- **World ID Integration**: Secure user authentication and bot prevention using World ID.
+- **AI-Assisted Senryu Creation**: Create senryu poems with the help of AI.
+- **Blockchain-Backed Submission**: Submit your senryu to the Base blockchain, so it stays safe and real.
+- **Community Voting**: Vote on your favorite senryu, with the results saved on the blockchain.
+- **World ID Integration**: Use World ID for secure login and bot prevention.
+- **Real-Time Vote Ranking**: See the latest rankings based on votes, powered by Goldsky.
 
 ## Technologies Used
 
-- **Blockchain Platform**: Base
-- **Smart Contracts**: Solidity
-- **Front-end**: Next.js
-- **AI Integration**: Groq API for AI-generated senryu
-- **Authentication**: World ID
-
-## Images
-
-<div style="text-align: center;">
-  <img src="./images/onchain-senryu-diagram.png" width="400" height="400" alt="System Overview"/>
-</div>
+- **Blockchain Platform**: Base - I use Base for my smart contracts, so all senryu submissions and votes are saved safely on the blockchain.
+- **Smart Contracts**: Solidity - My smart contracts handle the submission and voting process.
+- **Front-end**: Next.js - This makes the platform easy to use and navigate.
+- **AI Integration**: Groq API - Helps users create senryu poems based on their ideas.
+- **Authentication**: World ID - Keeps my users safe by preventing bots from joining.
+- **Data Management**: Goldsky - Helps me keep the senryu rankings up to date with real-time data.
 
 ## System Overview
 
-**Onchain Senryu** consists of a front-end built with Next.js and a blockchain back-end powered by Foundry. The system leverages smart contracts on the Base blockchain to handle senryu submissions and voting. AI integration through the Groq API allows users to generate senryu with ease. This decentralized approach ensures that every poem is verifiable and immutable, preserving the art form for future generations.
+**Onchain Senryu** uses Next.js for the front-end and Foundry for the blockchain back-end. Smart contracts on the Base blockchain handle the senryu submissions and voting. AI, through the Groq API, helps users create senryu. Goldsky's tools make sure the vote rankings are always up to date, so users can see the latest results.
+
+## Prize Categories & Criteria
+
+### Judging Criteria
+
+My project aims to meet the following five criteria:
+
+1. **Technicality**:
+   I have combined several advanced technologies, including blockchain, AI, and real-time data management to build this platform. The smart contracts on the Base blockchain securely handle all submissions and votes, while AI assists in generating senryu poems. Goldsky's real-time data tools ensure that vote counts are always up to date. This combination of technologies provides a smooth and reliable user experience.
+
+2. **Originality**:
+   Onchain Senryu brings the traditional Japanese art of senryu into the digital age, making it accessible to a global audience. While senryu is well-known in Japan, it is less familiar worldwide. By using AI to help users create senryu, I have created a new way for people from different cultures to engage with this unique form of poetry. This blend of old and new is a fresh approach to cultural preservation and creativity.
+
+3. **Practicality**:
+   My platform is fully functional and live on the Base blockchain. Users can create senryu, submit them to the blockchain, and participate in voting—all in real-time. The platform is stable and ready to be used by a wide audience, ensuring that all interactions are secure and transparent.
+
+4. **Usability (UI/UX/DX)**:
+   I have focused on making the platform as easy to use as possible. The interface is clean and intuitive, making it simple for users to create, submit, and vote on senryu. The integration of AI and blockchain is seamless, allowing users to focus on creativity rather than technology. The overall design ensures that even those new to blockchain can use the platform without difficulty.
+
+5. **WOW factor**:
+   Onchain Senryu stands out by bringing together ancient Japanese culture and cutting-edge Web3 technology. This project not only preserves a traditional art form but also opens it up to a global audience through the use of AI and blockchain. The unique combination of cultural heritage and modern technology provides a fresh and engaging experience that will appeal to both poetry lovers and tech enthusiasts alike.
+
+### Targeted Prizes
+
+**Base Prizes**
+- **Best apps built for creators on Base**: My platform lets people be creative with senryu, using blockchain to protect their work.
+- **Best apps built for social on Base**: I focus on user interaction through voting and sharing, which fits the social category.
+
+**Worldcoin Prizes**
+- **Best Use of World ID**: I use World ID to keep my platform secure, making sure only real people can create and vote on senryu.
+- **Pool Prize**: By using World ID for user verification, I also qualify for the Worldcoin Pool Prize.
+
+**Goldsky Prizes**
+- **Best Use of Goldsky**: I use Goldsky to keep my senryu rankings up to date, so users always see the latest results.
 
 ## Screenshots
 
@@ -73,7 +114,6 @@ ETH Global Link: [Onchain Senryu Showcase](https://ethglobal.com/showcase/onchai
 
    ```bash
    git clone https://github.com/susumutomita/2024-Superhack
-   cd 2024-Superhack
    ```
 
 2. **Install dependencies**:
@@ -98,19 +138,33 @@ ETH Global Link: [Onchain Senryu Showcase](https://ethglobal.com/showcase/onchai
 
 ## Usage
 
-- Open your browser and navigate to `http://localhost:3000`.
+- Open your browser and go to `http://localhost:3000`.
 - Create senryu poems, submit them to the blockchain, and vote on your favorites in the community.
 
 ## Future Prospects
 
-- **Multilingual Support**: Expand the platform to support senryu creation and interaction in multiple languages.
-- **Enhanced AI Features**: Integrate more advanced AI capabilities to offer users deeper insights and creative options for senryu creation.
-- **Visual Content Integration**: Add the ability to attach images or videos to senryu, enhancing the overall experience.
-- **Global Competitions**: Host international senryu competitions with rewards and recognition.
+- **Multilingual Support**: I want to let people create and share senryu in many languages.
+- **Enhanced AI Features**: I plan to add more AI tools to
+
+I apologize, it seems there was a system interruption. Let me continue from where I left off:
+
+---
+
+## Usage
+
+- Open your browser and go to `http://localhost:3000`.
+- Create senryu poems, submit them to the blockchain, and vote on your favorites in the community.
+
+## Future Prospects
+
+- **Multilingual Support**: I want to let people create and share senryu in many languages.
+- **Enhanced AI Features**: I plan to add more AI tools to help users create better senryu.
+- **Visual Content Integration**: Users may be able to add images or videos to their senryu.
+- **Global Competitions**: I hope to host global senryu contests with prizes.
 
 ## Contributing
 
-We welcome contributions to Onchain Senryu. Please fork the repository and submit pull requests for review. For major changes, please open an issue first to discuss what you would like to change.
+I welcome contributions to Onchain Senryu. Please fork the repository and submit pull requests for review. For major changes, please open an issue first to discuss what you would like to change.
 
 ## License
 
