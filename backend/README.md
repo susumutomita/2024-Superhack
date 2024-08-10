@@ -93,7 +93,7 @@ To deploy the smart contract to the blockchain, follow these steps:
 2. **Deploy the smart contract**:
 
    ```shell
-   forge script script/deploy_SenryuGame.s.sol:SenryuGameScript --rpc-url $RPC_URL --broadcast --sender $YOUR_ADDRESS --private-key $PRIVATE_KEY
+   forge script script/SenryuGame.s.sol:SenryuGameScript --rpc-url $RPC_URL --broadcast --sender $YOUR_ADDRESS --private-key $PRIVATE_KEY
    ```
 
 ## Testing

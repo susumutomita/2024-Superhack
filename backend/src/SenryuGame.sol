@@ -28,8 +28,8 @@ contract SenryuGame {
     }
 
     function vote(uint256 senryuId) public {
-        require(!hasVoted[msg.sender][senryuId], "You have already voted for this Senryu");
-        require(senryuId < senryus.length, "Invalid Senryu ID");
+        require(!hasVoted[msg.sender][senryuId], "You have already voted for this Senryu.");
+        require(senryuId < senryus.length, "Invalid Senryu ID.");
 
         senryus[senryuId].voteCount++;
         hasVoted[msg.sender][senryuId] = true;
@@ -54,7 +54,6 @@ contract SenryuGame {
         for (uint256 i = 0; i < len; i++) {
             sortedSenryus[i] = senryus[i];
         }
-        // Sort by voteCount in descending order
         for (uint256 i = 0; i < len - 1; i++) {
             for (uint256 j = 0; j < len - 1 - i; j++) {
                 if (sortedSenryus[j].voteCount < sortedSenryus[j + 1].voteCount) {

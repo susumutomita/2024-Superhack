@@ -19,7 +19,7 @@ export default async function handler(
   try {
     const response = await fetch(
       process.env.GOLDSKY_API_URL ||
-        "https://api.goldsky.com/api/public/project_clzjz50lmpswm01uq8oa85ws8/subgraphs/onchain-senryu/1.0.0/gn",
+        "https://api.goldsky.com/api/public/project_clzjz50lmpswm01uq8oa85ws8/subgraphs/onchain-senryu/1.0.2/gn",
       {
         method: "POST",
         headers: {
