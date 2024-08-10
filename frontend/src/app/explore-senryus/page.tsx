@@ -14,12 +14,15 @@ export default function ViewSenryus() {
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
   const pageSize = 10; // 一度に取得するSenryuの数
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchSenryus = async () => {
       setLoading(true);
+      setError(null); // 既存のエラーをクリア
+
       if (!window.ethereum) {
-        alert("MetaMask is not installed!");
+        setError("MetaMaskがインストールされていません！");
         setLoading(false);
         return;
       }
@@ -35,10 +38,10 @@ export default function ViewSenryus() {
         );
 
         setSenryus(formattedSenryus);
-        setLoading(false);
       } catch (error) {
-        console.error("Error fetching senryus:", error);
-        alert("Failed to fetch senryus");
+        console.error("Senryuの取得中にエラーが発生しました:", error);
+        setError("Senryuの取得に失敗しました");
+      } finally {
         setLoading(false);
       }
     };
@@ -48,8 +51,10 @@ export default function ViewSenryus() {
 
   const vote = async (senryuId: number) => {
     setLoading(true);
+    setError(null); // 既存のエラーをクリア
+
     if (!window.ethereum) {
-      alert("MetaMask is not installed!");
+      setError("MetaMaskがインストールされていません！");
       setLoading(false);
       return;
     }
@@ -64,14 +69,14 @@ export default function ViewSenryus() {
       await contract.vote(senryuId);
       const formattedSenryus = await fetchSenryusData(page, pageSize, contract);
       setSenryus(formattedSenryus);
-      setLoading(false);
     } catch (error: any) {
-      console.error("Error voting for senryu:", error);
+      console.error("Senryuへの投票中にエラーが発生しました:", error);
       if (error.code === 4001) {
-        alert("MetaMask access denied");
+        setError("MetaMaskのアクセスが拒否されました");
       } else {
-        alert("Failed to vote for senryu");
+        setError("Senryuへの投票に失敗しました");
       }
+    } finally {
       setLoading(false);
     }
   };
@@ -89,45 +94,62 @@ export default function ViewSenryus() {
   };
 
   return (
-    <div className="container mx-auto p-4 dark-mode-bg">
-      <h1 className="text-2xl font-bold mb-4">Senryus</h1>
+    <div
+      className="container mx-auto p-4 dark-mode-bg"
+      style={{
+        fontFamily:
+          '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+      }}
+    >
+      <h1 className="text-3xl font-bold mb-6 text-white">Explore Senryus</h1>
+
+      {error && <p className="text-red-600 mb-4">{error}</p>}
+
       {loading ? (
-        <p>Loading...</p>
+        <p className="text-white">Loading...</p>
       ) : (
-        <ul>
+        <ul className="space-y-4">
           {senryus.map((senryu) => (
-            <li key={senryu.id} className="mb-2">
-              <strong>Content:</strong> {senryu.content}
-              <br />
-              <strong>Votes:</strong> {senryu.voteCount}
-              <button
-                onClick={() => vote(senryu.id)}
-                className="ml-2 bg-blue-500 text-white px-2 py-1 rounded-md dark-mode-button"
-              >
-                Vote
-              </button>
+            <li
+              key={senryu.id}
+              className="p-4 bg-gray-900 text-white rounded-md shadow-sm"
+            >
+              <p className="text-lg font-semibold mb-2">"{senryu.content}"</p>
+              <div className="flex justify-between items-center">
+                <span className="text-gray-400">Votes: {senryu.voteCount}</span>
+                <button
+                  onClick={() => vote(senryu.id)}
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-full shadow-md dark-mode-button"
+                >
+                  Vote
+                </button>
+              </div>
             </li>
           ))}
         </ul>
       )}
-      <div className="mt-4 flex justify-between">
+
+      <div className="mt-8 flex justify-between">
         <button
           onClick={handlePreviousPage}
-          className="bg-gray-500 text-white px-4 py-2 rounded-md dark-mode-button"
+          className="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-full shadow-md dark-mode-button"
           disabled={page === 1}
         >
           Previous
         </button>
         <button
           onClick={handleNextPage}
-          className="bg-gray-500 text-white px-4 py-2 rounded-md dark-mode-button"
+          className="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-full shadow-md dark-mode-button"
+          disabled={senryus.length < pageSize}
         >
           Next
         </button>
       </div>
+
       <button
         onClick={() => window.history.back()}
-        className="mt-4 bg-gray-500 text-white px-4 py-2 rounded-md dark-mode-button"
+        className="mt-6 bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-full shadow-md dark-mode-button"
+        style={{ textTransform: "none" }}
       >
         Back
       </button>
