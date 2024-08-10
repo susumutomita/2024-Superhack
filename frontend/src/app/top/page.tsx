@@ -24,7 +24,7 @@ export default function Home() {
         flexDirection="row"
         mt={4}
       >
-        <Link href="/submit-senryu" passHref>
+        <Link href="/create-senryu" passHref>
           <Button
             variant="contained"
             sx={{
@@ -38,7 +38,7 @@ export default function Home() {
             Create a Senryu
           </Button>
         </Link>
-        <Link href="/senryus" passHref>
+        <Link href="/explore-senryus" passHref>
           <Button
             variant="contained"
             sx={{
