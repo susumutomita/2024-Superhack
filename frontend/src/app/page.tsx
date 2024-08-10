@@ -37,11 +37,17 @@ export default function Home() {
   return (
     <div
       className="flex flex-col items-center justify-center h-screen bg-cover bg-center text-white"
-      style={{ backgroundImage: `url('/path/to/your/background/image.png')` }}
+      style={{
+        backgroundImage: `url('/path/to/your/background/image.png')`,
+        fontFamily:
+          '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+      }}
     >
       <h1 className="text-4xl mb-5 font-bold">Onchain Senryu</h1>
-      <p className="text-2xl mb-5">Welcome! Please verify to enter</p>
-      <p className="text-lg mb-5 px-10 text-center">
+      <p className="text-xl mb-5 text-center">
+        Welcome! Please verify to enter.
+      </p>
+      <p className="text-lg mb-5 px-8 text-center">
         This platform is dedicated to the art of Senryu, a form of short
         Japanese poetry. Senryu are often humorous or satirical, reflecting
         human nature. To explore and contribute, please verify your identity.
@@ -54,8 +60,13 @@ export default function Home() {
         verification_level={VerificationLevel.Orb}
       />
       <button
-        className="mt-4 bg-blue-500 text-white px-4 py-2 rounded-md"
+        className="mt-4 bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full shadow-md"
         onClick={() => setOpen(true)}
+        style={{
+          fontFamily:
+            '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+          textTransform: "none",
+        }}
       >
         Enter
       </button>

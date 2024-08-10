@@ -15,9 +15,11 @@ export default function SubmitSenryu() {
   const [generatedSenryu, setGeneratedSenryu] = useState("");
   const [loading, setLoading] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const generateSenryu = async () => {
     setLoading(true);
+    setError(null); // Clear any existing errors
 
     try {
       const response = await fetch("/api/generate-senryu", {
@@ -33,11 +35,11 @@ export default function SubmitSenryu() {
       if (response.ok) {
         setGeneratedSenryu(data.senryu);
       } else {
-        alert("Failed to generate senryu: " + data.error);
+        setError("Failed to generate senryu: " + data.error);
       }
     } catch (error) {
       console.error("Error generating senryu:", error);
-      alert("Error generating senryu");
+      setError("Error generating senryu");
     } finally {
       setLoading(false);
     }
@@ -45,16 +47,17 @@ export default function SubmitSenryu() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError(null); // Clear any existing errors
 
     if (!generatedSenryu.trim()) {
-      alert("Generated Senryu cannot be empty!");
+      setError("Generated Senryu cannot be empty!");
       return;
     }
 
     setSubmitting(true);
 
     if (!window.ethereum) {
-      alert("MetaMask is not installed!");
+      setError("MetaMask is not installed!");
       setSubmitting(false);
       return;
     }
@@ -65,15 +68,16 @@ export default function SubmitSenryu() {
       const provider = new BrowserProvider(window.ethereum);
       const signer = await provider.getSigner();
       const contract = new Contract(contractAddress, abi, signer);
-      await contract.submitSenryu(generatedSenryu); // 川柳のみをブロックチェーンに書き込む
+      await contract.submitSenryu(generatedSenryu);
       alert("Senryu submitted successfully!");
-      setGeneratedSenryu(""); // フォームをクリア
+      setGeneratedSenryu("");
+      setContent(""); // Clear the form
     } catch (error: any) {
       console.error("Error submitting senryu:", error);
       if (error.code === 4001) {
-        alert("MetaMask access denied");
+        setError("MetaMask access denied");
       } else {
-        alert("Failed to submit senryu");
+        setError("Failed to submit senryu");
       }
     } finally {
       setSubmitting(false);
@@ -81,10 +85,15 @@ export default function SubmitSenryu() {
   };
 
   return (
-    <div className="container mx-auto p-4 dark-mode-bg">
-      <h1 className="text-2xl font-bold mb-4">Submit a Senryu</h1>
+    <div
+      className="container mx-auto p-4 dark-mode-bg"
+      style={{
+        fontFamily:
+          '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+      }}
+    >
+      <h1 className="text-3xl font-bold mb-4">Submit a Senryu</h1>
 
-      {/* 川柳の説明を追加 */}
       <div className="mb-6">
         <h2 className="text-xl font-semibold mb-2">What is a Senryu?</h2>
         <p>
@@ -106,36 +115,50 @@ export default function SubmitSenryu() {
             value={content}
             onChange={(e) => setContent(e.target.value)}
             className="mt-1 p-2 border rounded-md shadow-sm w-full dark-mode-input"
+            placeholder="Enter your idea or prompt here..."
           />
         </div>
         <button
           type="button"
           onClick={generateSenryu}
-          className="bg-blue-500 text-white px-4 py-2 rounded-md dark-mode-button"
+          className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-full shadow-md dark-mode-button"
           disabled={loading}
+          style={{ textTransform: "none" }}
         >
           {loading ? "Generating..." : "Generate Senryu"}
         </button>
 
-        {/* 生成された川柳を表示 */}
+        {error && <p className="text-red-600 mt-4">{error}</p>}
+
         {generatedSenryu && (
           <div className="mt-4">
             <h2 className="text-xl font-bold">Generated Senryu:</h2>
-            <p className="mt-2">{generatedSenryu}</p>
+            <textarea
+              className="mt-2 p-4 bg-gray-100 text-gray-900 rounded-md border border-gray-300 w-full"
+              style={{
+                backgroundColor: "#f5f5f5",
+                color: "#333",
+                height: "100px",
+              }}
+              value={generatedSenryu}
+              onChange={(e) => setGeneratedSenryu(e.target.value)}
+            />
+            <button
+              type="submit"
+              className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 mt-4 rounded-full shadow-md dark-mode-button"
+              disabled={submitting}
+              style={{ textTransform: "none" }}
+            >
+              {submitting ? "Submitting..." : "Submit Senryu"}
+            </button>
           </div>
         )}
-
-        <button
-          type="submit"
-          className="bg-green-500 text-white px-4 py-2 rounded-md dark-mode-button"
-          disabled={submitting || !generatedSenryu}
-        >
-          {submitting ? "Submitting..." : "Submit Senryu"}
-        </button>
       </form>
+
       <button
         onClick={() => window.history.back()}
-        className="mt-4 bg-gray-500 text-white px-4 py-2 rounded-md dark-mode-button"
+        className="mt-6 bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-full shadow-md dark-mode-button"
+        style={{ textTransform: "none" }}
       >
         Back
       </button>
