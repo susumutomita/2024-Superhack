@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { BrowserProvider, Contract } from "ethers";
 import { abi, contractAddress } from "../constants/contract";
+import "./submit-senryu.css"; // CSSファイルをインポート
 
 declare global {
   interface Window {
@@ -85,13 +86,7 @@ export default function SubmitSenryu() {
   };
 
   return (
-    <div
-      className="container mx-auto p-4 dark-mode-bg"
-      style={{
-        fontFamily:
-          '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
-      }}
-    >
+    <div className="container mx-auto p-4 dark-mode-bg">
       <h1 className="text-3xl font-bold mb-4">Submit a Senryu</h1>
 
       <div className="mb-6">
@@ -116,6 +111,7 @@ export default function SubmitSenryu() {
             onChange={(e) => setContent(e.target.value)}
             className="mt-1 p-2 border rounded-md shadow-sm w-full dark-mode-input"
             placeholder="Enter your idea or prompt here..."
+            style={{ color: "#000000" }} // ここでフォントカラーを設定
           />
         </div>
         <button
@@ -123,7 +119,6 @@ export default function SubmitSenryu() {
           onClick={generateSenryu}
           className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-full shadow-md dark-mode-button"
           disabled={loading}
-          style={{ textTransform: "none" }}
         >
           {loading ? "Generating..." : "Generate Senryu"}
         </button>
@@ -135,19 +130,14 @@ export default function SubmitSenryu() {
             <h2 className="text-xl font-bold">Generated Senryu:</h2>
             <textarea
               className="mt-2 p-4 bg-gray-100 text-gray-900 rounded-md border border-gray-300 w-full"
-              style={{
-                backgroundColor: "#f5f5f5",
-                color: "#333",
-                height: "100px",
-              }}
               value={generatedSenryu}
               onChange={(e) => setGeneratedSenryu(e.target.value)}
+              style={{ color: "#000000" }} // ここでフォントカラーを設定
             />
             <button
               type="submit"
               className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 mt-4 rounded-full shadow-md dark-mode-button"
               disabled={submitting}
-              style={{ textTransform: "none" }}
             >
               {submitting ? "Submitting..." : "Submit Senryu"}
             </button>
@@ -158,7 +148,6 @@ export default function SubmitSenryu() {
       <button
         onClick={() => window.history.back()}
         className="mt-6 bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-full shadow-md dark-mode-button"
-        style={{ textTransform: "none" }}
       >
         Back
       </button>
