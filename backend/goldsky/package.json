@@ -4,7 +4,7 @@
   "scripts": {
     "codegen": "graph codegen",
     "build": "graph build",
-    "deploy": "goldsky subgraph deploy onchain-senryu/1.0.1 --path ."
+    "deploy": "goldsky subgraph deploy onchain-senryu/1.0.2 --path ."
   },
   "dependencies": {
     "@graphprotocol/graph-cli": "0.51.0",

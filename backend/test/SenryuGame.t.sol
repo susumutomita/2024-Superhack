@@ -58,7 +58,7 @@ contract SenryuGameTest is Test {
             // This should fail
             assertTrue(false);
         } catch Error(string memory reason) {
-            assertEq(reason, "You have already voted for this Senryu");
+            assertEq(reason, "You have already voted for this Senryu.");
         }
     }
 
@@ -73,7 +73,7 @@ contract SenryuGameTest is Test {
             // This should fail
             assertTrue(false);
         } catch Error(string memory reason) {
-            assertEq(reason, "Invalid Senryu ID");
+            assertEq(reason, "Invalid Senryu ID.");
         }
     }
 
