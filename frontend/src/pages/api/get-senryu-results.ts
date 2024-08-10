@@ -1,5 +1,11 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
+type Senryu = {
+  id: string;
+  content: string;
+  voteCount: number;
+};
+
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
@@ -12,7 +18,8 @@ export default async function handler(
 
   try {
     const response = await fetch(
-      "https://api.goldsky.com/api/public/project_clzjz50lmpswm01uq8oa85ws8/subgraphs/onchain-senryu/1.0.0/gn",
+      process.env.GOLDSKY_API_URL ||
+        "https://api.goldsky.com/api/public/project_clzjz50lmpswm01uq8oa85ws8/subgraphs/onchain-senryu/1.0.0/gn",
       {
         method: "POST",
         headers: {
@@ -34,11 +41,12 @@ export default async function handler(
 
     const result = await response.json();
 
-    const formattedSenryus = result.data.senryus.map((senryu: any) => ({
+    const formattedSenryus = result.data.senryus.map((senryu: Senryu) => ({
       id: senryu.id,
       content: senryu.content,
       voteCount: senryu.voteCount,
     }));
+    console.log("formattedSenryus", formattedSenryus);
 
     res.status(200).json({ topSenryus: formattedSenryus });
   } catch (error) {
