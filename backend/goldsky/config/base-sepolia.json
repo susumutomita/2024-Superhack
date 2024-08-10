@@ -1,0 +1,7 @@
+{
+  "network": "base-sepolia",
+  "address": "0x624669da92762546073a8B00579835216F5FD4B4",
+  "startBlock": 8251298,
+  "file": "SenryuGame",
+  "tokenEvent": "SubmitSenryu(uint256,string,address)"
+}

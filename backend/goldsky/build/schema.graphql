@@ -1,0 +1,13 @@
+type Senryu @entity {
+  id: ID!
+  content: String!
+  author: Bytes!
+  voteCount: BigInt!
+}
+
+
+type Vote @entity {
+  id: ID!
+  senryuId: Senryu!
+  voter: Bytes!
+}

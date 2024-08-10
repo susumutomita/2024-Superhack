@@ -1,0 +1,30 @@
+specVersion: 0.0.4
+description: on-chain data for the GoldSky project
+repository: https://github.com/susumutomita/2024-Superhack
+schema:
+  file: ./schema.graphql
+
+dataSources:
+  - kind: ethereum/contract
+    name: SenryuGame
+    network: base-sepolia
+    source:
+      address: "0x624669da92762546073a8B00579835216F5FD4B4"
+      abi: SenryuGame
+      startBlock: 8251298
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - Senryu
+        - Vote
+      abis:
+        - name: SenryuGame
+          file: ./abis/SenryuGame.json
+      eventHandlers:
+        - event: SenryuSubmitted(uint256,string,address)
+          handler: handleSenryuSubmitted
+        - event: Voted(uint256,address)
+          handler: handleVoted
+      file: ./src/mapping.ts
