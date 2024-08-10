@@ -1,4 +1,4 @@
-import { BigInt as GraphBigInt } from "@graphprotocol/graph-ts";
+import { BigInt } from "@graphprotocol/graph-ts";
 import { SenryuSubmitted, Voted } from "../generated/SenryuGame/SenryuGame";
 import { Senryu, Vote } from "../generated/schema";
 

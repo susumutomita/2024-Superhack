@@ -3,6 +3,7 @@ type Senryu @entity {
   content: String!
   author: Bytes!
   voteCount: BigInt!
+  timestamp: BigInt!
 }
 
 
@@ -10,4 +11,5 @@ type Vote @entity {
   id: ID!
   senryuId: Senryu!
   voter: Bytes!
+  timestamp: BigInt!
 }
