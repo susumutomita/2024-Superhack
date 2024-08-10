@@ -35,8 +35,17 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
-      <h1 className="text-3xl mb-5">ようこそ！入店のために認証してください</h1>
+    <div
+      className="flex flex-col items-center justify-center h-screen bg-cover bg-center text-white"
+      style={{ backgroundImage: `url('/path/to/your/background/image.png')` }}
+    >
+      <h1 className="text-4xl mb-5 font-bold">Onchain Senryu</h1>
+      <p className="text-2xl mb-5">Welcome! Please verify to enter</p>
+      <p className="text-lg mb-5 px-10 text-center">
+        This platform is dedicated to the art of Senryu, a form of short
+        Japanese poetry. Senryu are often humorous or satirical, reflecting
+        human nature. To explore and contribute, please verify your identity.
+      </p>
       <IDKitWidget
         action={action}
         app_id={app_id}
