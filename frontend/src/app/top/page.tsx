@@ -52,7 +52,7 @@ export default function Home() {
             Explore Senryus
           </Button>
         </Link>
-        <Link href="/vote-result" passHref>
+        <Link href="/view-result" passHref>
           <Button
             variant="contained"
             sx={{

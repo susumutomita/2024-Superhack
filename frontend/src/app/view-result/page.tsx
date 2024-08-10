@@ -43,41 +43,56 @@ export default function VoteResult() {
   };
 
   return (
-    <div className="container mx-auto p-4 dark-mode-bg">
-      <h1 className="text-2xl font-bold mb-4">Vote Result</h1>
+    <div
+      className="container mx-auto p-6 dark-mode-bg"
+      style={{
+        fontFamily:
+          '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+        maxWidth: "800px",
+      }}
+    >
+      <h1 className="text-3xl font-bold mb-6 text-center">Vote Results</h1>
       {loading ? (
-        <p>Loading...</p>
+        <p className="text-center">Loading...</p>
       ) : (
-        <ul>
+        <ul className="space-y-4">
           {topSenryus
             .filter((senryu) => senryu.content) // 空のコンテンツを除外
             .map((senryu) => (
-              <li key={senryu.id.toString()} className="mb-2">
-                <strong>Content:</strong> {senryu.content || "No Content"}{" "}
-                <br />
-                <strong>Votes:</strong> {senryu.voteCount.toString()}
+              <li
+                key={senryu.id.toString()}
+                className="p-4 bg-gray-100 dark:bg-gray-800 rounded-md shadow-sm"
+              >
+                <p className="text-lg font-semibold mb-2">"{senryu.content}"</p>
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-700 dark:text-gray-300">
+                    Votes: {senryu.voteCount.toString()}
+                  </span>
+                </div>
               </li>
             ))}
         </ul>
       )}
-      <div className="mt-4 flex justify-between">
+      <div className="mt-8 flex justify-between">
         <button
           onClick={handlePreviousPage}
-          className="bg-gray-500 text-white px-4 py-2 rounded-md dark-mode-button"
+          className="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-full shadow-md dark-mode-button"
           disabled={page === 1}
         >
           Previous
         </button>
         <button
           onClick={handleNextPage}
-          className="bg-gray-500 text-white px-4 py-2 rounded-md dark-mode-button"
+          className="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-full shadow-md dark-mode-button"
+          disabled={topSenryus.length < pageSize}
         >
           Next
         </button>
       </div>
       <button
         onClick={() => window.history.back()}
-        className="mt-4 bg-gray-500 text-white px-4 py-2 rounded-md dark-mode-button"
+        className="mt-6 bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-full shadow-md dark-mode-button"
+        style={{ textTransform: "none" }}
       >
         Back
       </button>
