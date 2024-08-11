@@ -78,7 +78,7 @@ This step validates the subgraph and prepares it for deployment.
 
 ## Deploying the Subgraph
 
-Deploy the subgraph to Goldsky. Ensure to update the version in the deploy command if necessary:
+Deploy the subgraph to Goldsky. Ensure to update the version in the deployment command if necessary:
 
 ```bash
 npm run deploy
