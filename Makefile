@@ -53,6 +53,10 @@ start:
 build_backend:
 	cd backend && forge build
 
+.PHONY: export_pdf
+export_pdf:
+	npx marp pitch_deck.md --pdf --allow-local-files --html
+
 .PHONY: help
 help:
 	@echo "Usage: make [target]"
@@ -60,6 +64,7 @@ help:
 	@echo "Targets:"
 	@echo "  install         Install npm packages"
 	@echo "  install_all     Run npm install-all"
+	@echo "  export_pdf			Export pitch deck to PDF"
 	@echo "  setup_husky     Setup Husky"
 	@echo "  clean           Clean the project"
 	@echo "  lint            Run linter"
