@@ -108,6 +108,7 @@ My project aims to meet the following five criteria:
 <img src=./images/worldidauthentication.png width=50%>
 <img src=./images/toppage.png width=50%>
 <img src=./images/createsenryu.png width=50%>
+<img src=./images/createsenryu2.png width=50%>
 <img src=./images/explore.png width=50%>
 <img src=./images/voteresult.png width=50%>
 
