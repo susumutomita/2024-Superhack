@@ -104,9 +104,12 @@ My project aims to meet the following five criteria:
 
 ## Screenshots
 
-<div style="text-align: center;">
-  <img src="./images/onchain-senryu-screenshot.png" width="400" height="300" alt="Onchain Senryu Screenshot"/>
-</div>
+<img src=./images/signin.png width=100%>
+<img src=./images/worldidauthentication.png width=50%>
+<img src=./images/toppage.png width=50%>
+<img src=./images/createsenryu.png width=50%>
+<img src=./images/explore.png width=50%>
+<img src=./images/voteresult.png width=50%>
 
 ## Installation
 
