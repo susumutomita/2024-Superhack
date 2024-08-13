@@ -148,20 +148,6 @@ My project aims to meet the following five criteria:
 ## Future Prospects
 
 - **Multilingual Support**: I want to let people create and share senryu in many languages.
-- **Enhanced AI Features**: I plan to add more AI tools to
-
-I apologize, it seems there was a system interruption. Let me continue from where I left off:
-
----
-
-## Usage
-
-- Open your browser and go to `http://localhost:3000`.
-- Create senryu poems, submit them to the blockchain, and vote on your favorites in the community.
-
-## Future Prospects
-
-- **Multilingual Support**: I want to let people create and share senryu in many languages.
 - **Enhanced AI Features**: I plan to add more AI tools to help users create better senryu.
 - **Visual Content Integration**: Users may be able to add images or videos to their senryu.
 - **Global Competitions**: I hope to host global senryu contests with prizes.
